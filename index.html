@@ -7,14 +7,14 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="WYRDSTONE">
+<meta name="apple-mobile-web-app-title" content="WOR">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" href="icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Dela+Gothic+One&family=Unbounded:wght@700;900&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
-<title>WYRDSTONE</title>
+<title>WARDENS OF RELIC</title>
 <style>
 :root{
   /* ゲーム画面・シートの中で使う色（ゲーム側のCSSがこの名前を参照する） */
@@ -1047,7 +1047,7 @@ nav .ind{width:calc((100% - 12px) / 2)}
 <body>
 <div class="sky" aria-hidden="true"><i class="au a1"></i><i class="au a2"></i><i class="au a3"></i><i class="au a4"></i><span class="stars"></span><span class="grid"></span><i class="beam b1"></i><i class="beam b2"></i><i class="beam b3"></i></div>
 <header>
-  <div class="logo wdlogo"><b>WYRD<span>STONE</span></b><small>THE STONES OF FATE</small></div>
+  <div class="logo wdlogo"><b>WARDENS <span>OF RELIC</span></b><small>ORIGINAL BOARD GAME</small></div>
   <div class="sp"></div>
   <button class="me" id="meBtn" aria-label="この端末の自分を選ぶ"><span class="dot" style="background:#555"></span><span>自分を選ぶ</span></button>
   <button class="gear" id="gearBtn" aria-label="設定"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
@@ -1070,7 +1070,7 @@ nav .ind{width:calc((100% - 12px) / 2)}
    ============================================================ */
 const CFG_URL = "https://mspzgfkommmuucjvdvbm.supabase.co";
 const CFG_KEY = "sb_publishable_sj2rETV0MdsP1hA56C70kQ_F5eS1Via";
-const APP_VER = "v1";
+const APP_VER = "v3";
 
 const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const lsSet = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
@@ -1184,7 +1184,7 @@ function flash(big, small){
 
 /* ---------- ルール ---------- */
 function openGameRules(k){
-  const title = { hx: "どんぐり戦争のルール", sz: "四季の巡りのルール", lm: "LEMNISCATEのルール", wd: "WYRDSTONEのルール" }[k];
+  const title = { hx: "どんぐり戦争のルール", sz: "四季の巡りのルール", lm: "LEMNISCATEのルール", wd: "WARDENS OF RELICのルール" }[k];
   const html = { hx: hxRulesHtml, sz: szRulesHtml, lm: lmRulesHtml, wd: wdRulesHtml }[k]();
   let el = $("#artpop");
   if (!el){ el = document.createElement("div"); el.id = "artpop"; el.className = "artpop"; document.body.appendChild(el); el.addEventListener("click", e => { if (e.target === el || e.target.closest("[data-artclose]")) el.classList.remove("on"); }); }
@@ -1277,8 +1277,8 @@ function cpuKick(){
 let hxId = null, szId = null, lmId = null;
 const drawHx = () => {}, drawSz = () => {}, drawLm = () => {}, hxLive = () => [], szLive = () => [], lmLive = () => [];
 const hxMyTurn = () => false, szMyTurn = () => false, lmMyTurn = () => false, hxRulesHtml = () => "", szRulesHtml = () => "", lmRulesHtml = () => "";
-/* ======================= WYRDSTONE（ルール処理：画面に依存しない部分） ======================= */
-const WD_TITLE = "WYRDSTONE";
+/* ======================= WARDENS OF RELIC（ルール処理：画面に依存しない部分） ======================= */
+const WD_TITLE = "WARDENS OF RELIC";
 const WD_AT = ["炎", "水", "木", "雷", "闇", "龍", "覇", "天", "幻"];
 const WD_RARE = ["龍", "覇", "天", "幻"];
 const WD_DIE = ["炎", "炎", "炎", "炎", "水", "水", "水", "水", "木", "木", "木", "木", "雷", "雷", "闇", "闇", "龍", "幻", "天", "覇"];
@@ -2479,7 +2479,7 @@ function wdD20(a, cls = ""){
   return `<svg class="wdd20 ${cls}" viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,3 91,26.5 91,73.5 50,97 9,73.5 9,26.5" fill="#12081F"/>${fac}<polygon points="50,25 76.5,70 23.5,70" fill="${c}" stroke="#fff" stroke-opacity=".7" stroke-width="1.2" stroke-linejoin="round"/><polygon points="50,25 63,47 37,47" fill="#fff" fill-opacity=".22"/>${g}<polygon points="50,3 91,26.5 91,73.5 50,97 9,73.5 9,26.5" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.4" stroke-linejoin="round"/></svg>`;
 }
 
-/* ======================= WYRDSTONE（画面・オンライン） ======================= */
+/* ======================= WARDENS OF RELIC（画面・オンライン） ======================= */
 const WD_SEAT_BONUS = 150;    // 2番手以降は、手番が遅いほど開始wpを多く（先手有利の調整）
 const wdGames = () => db.wd_games || [];
 const wdLive = () => wdGames().filter(g => g.status === "playing" && g.st && g.st.wd).sort((a, b) => b.created_at.localeCompare(a.created_at));
@@ -2708,7 +2708,7 @@ function wdRender(g, D, live){
 }
 function wdTopH(st, D){
   const r = D ? D.round : st.round;
-  return `<div class="wdtop"><button class="wdback" id="wdBack" aria-label="もどる">‹</button><div class="wdttl"><b>WYRDSTONE</b><small>${st.ph === "draft" ? "DRAFT" : `ROUND ${r}`}</small></div><button class="wdchip" id="wdSpdB" title="演出の速さ">演出<i>${WD_SPD_L[wdSpd()] || "ふつう"}</i></button><button class="wdchip ${wdGuideOn() ? "on" : ""}" id="wdGuide">ガイド<i>${wdGuideOn() ? "ON" : "OFF"}</i></button><button class="wdmenu" id="wdMenu" aria-label="メニュー">⋯</button></div>`;
+  return `<div class="wdtop"><button class="wdback" id="wdBack" aria-label="もどる">‹</button><div class="wdttl"><b>WARDENS OF RELIC</b><small>${st.ph === "draft" ? "DRAFT" : `ROUND ${r}`}</small></div><button class="wdchip" id="wdSpdB" title="演出の速さ">演出<i>${WD_SPD_L[wdSpd()] || "ふつう"}</i></button><button class="wdchip ${wdGuideOn() ? "on" : ""}" id="wdGuide">ガイド<i>${wdGuideOn() ? "ON" : "OFF"}</i></button><button class="wdmenu" id="wdMenu" aria-label="メニュー">⋯</button></div>`;
 }
 function wdEnsureRoot(root){
   if (root.querySelector("#wdMain")) return;
@@ -3331,7 +3331,7 @@ function wdZukan(){
 
 function wdMenu(g){
   const mine = (g.players || []).includes(me);
-  const s = openSheet("WYRDSTONE", `<div class="btns col"><button class="btn sub" data-grule="wd">ルールを見る</button><button class="btn sub" id="wdZkB">キャラ図鑑（全20体）</button><button class="btn sub" id="wdLogB">ログを見る</button>${mine && g.status === "playing" ? `<button class="btn danger" id="wdAbort">この対戦をやめる</button>` : ""}</div>`);
+  const s = openSheet("WARDENS OF RELIC", `<div class="btns col"><button class="btn sub" data-grule="wd">ルールを見る</button><button class="btn sub" id="wdZkB">キャラ図鑑（全20体）</button><button class="btn sub" id="wdLogB">ログを見る</button>${mine && g.status === "playing" ? `<button class="btn danger" id="wdAbort">この対戦をやめる</button>` : ""}</div>`);
   s.querySelector("#wdZkB").onclick = () => { closeSheet(); wdZukan(); };
   const lb = s.querySelector("#wdLogB"); if (lb) lb.onclick = () => openSheet("ログ", `<div class="wdlog">${(g.log || []).slice().reverse().map(l => `<p>${colorizeLog(g.players, l.m)}</p>`).join("")}</div>`);
   const ab = s.querySelector("#wdAbort"); if (ab) ab.onclick = async () => { if (!confirmWd("この対戦をやめますか？（戦績には残りません）")) return; const { error } = await sb.from("wd_games").update({ status: "aborted" }).eq("id", g.id); if (error) return fail(error, "中止"); await loadTable("wd_games"); closeSheet(); closeWd(); };
@@ -3351,8 +3351,8 @@ function wdEndShow(g){
 /* ---------- 新しく始める ---------- */
 function openWdNew(){
   let order = db.players.map(p => p.id).slice(0, 5);
-  const s = openSheet("WYRDSTONEを始める", `
-    <p class="note">【オリジナル・開発中】運命の力 wp を集めて、属性キューブと合わせて秘宝を手に入れる。秘宝の★の合計が最初に${WD_WIN_STARS}以上になった人の勝ち（2〜5人・45〜60分）。キャラは20体、それぞれ10種類の効果を持つ。</p>
+  const s = openSheet("WARDENS OF RELICを始める", `
+    <p class="note">【オリジナル・開発中】守護者の力 wp（Wardens Point）を集めて、属性キューブと合わせて秘宝を手に入れる。秘宝の★の合計が最初に${WD_WIN_STARS}以上になった人の勝ち（2〜5人・45〜60分）。キャラは20体、それぞれ10種類の効果を持つ。</p>
     <div class="btns"><button type="button" class="grbtn" data-grule="wd">ルールを見る</button><button type="button" class="grbtn" id="wdZkN">キャラ図鑑</button></div>
     <div class="f"><span>参加者（タップで選ぶ・2〜5人）</span>${chipPlayers(db.players.map(p => p.id), order)}${cpuChips(order)}</div>
     <div class="f"><span>手番の順番・名前を指で動かして並べ替え（1番の人から。2番手以降は開始wpが${WD_SEAT_BONUS}ずつ多い）</span><div id="wdOrder" class="norder"></div><button class="shufbtn" id="wdShuf">順番をシャッフル</button></div>
@@ -3373,14 +3373,14 @@ function openWdNew(){
     $("#wdGo").disabled = true;
     const r = await wdCall({ op: "new", players: order, by: me || null });
     $("#wdGo").disabled = false;
-    if (!r || !r.ok){ const m = (r && r.error) || ""; if (/wd_games|relation|exist|schema|permission/i.test(m)) toast("WYRDSTONEを使うには schema.sql をもう一度実行してください", 3800); else toast("作成できませんでした：" + m, 4000); return; }
+    if (!r || !r.ok){ const m = (r && r.error) || ""; if (/wd_games|relation|exist|schema|permission/i.test(m)) toast("WARDENS OF RELICを使うには schema.sql をもう一度実行してください", 3800); else toast("作成できませんでした：" + m, 4000); return; }
     wdGot(r.row); closeSheet(); openWd(r.row.id);
   };
 }
 
 /* ---------- ルール ---------- */
 function wdRulesHtml(){
-  return `<h4>目的</h4><p>運命の力 <b>wp</b>（Wyrd Point）を集め、属性キューブと合わせて<b>秘宝の★の合計が最初に${WD_WIN_STARS}以上になった人の勝ち</b>（★1〜★5、各2つ）。届く前に秘宝が全部なくなったら、★の合計が多い人の勝ち（同じならwpが多い人）。枠は4つでキャラが最低1体いるので、秘宝は最大3つ。安い秘宝で枠を埋めると★が届かなくなるので注意。wpは全員に公開。</p>
+  return `<h4>目的</h4><p>守護者の力 <b>wp</b>（Wardens Point）を集め、属性キューブと合わせて<b>秘宝の★の合計が最初に${WD_WIN_STARS}以上になった人の勝ち</b>（★1〜★5、各2つ）。届く前に秘宝が全部なくなったら、★の合計が多い人の勝ち（同じならwpが多い人）。枠は4つでキャラが最低1体いるので、秘宝は最大3つ。安い秘宝で枠を埋めると★が届かなくなるので注意。wpは全員に公開。</p>
   <h4>準備</h4><p>全員1000wp（2番手以降は${WD_SEAT_BONUS}wpずつ多い）。キャラを3体配り、1体取って残り2体を次の人へ。受け取った2体から1体取り、残りは山札へ（1人2体）。場にキャラを3体並べる。キャラは3つの枠がすべて「無」、Lv1から。</p>
   <h4>手番の流れ</h4>
   <p><b>手順1：ダイス</b> 属性ダイス（20面：炎・水・木 各4、雷・闇 各2、龍・幻・天・覇 各1）を2つ振り、1つの目を選ぶ。その属性のキューブを持つ人は全員（振った人も）キューブ1つにつき 炎水木100・雷闇200・龍幻天覇400wp。メイン枠（一番上）のキューブは2倍。自分のキャラにキューブが1つもなければ、手順1はとばす。</p>
@@ -3419,8 +3419,8 @@ const GAMES = [
     start: () => openLmNew(), open: g => openLm(g.id),
     winners: g => { const E = g.st && g.st.end; return E && E.total ? maxOf(g.st.players, p => E.total[p] || 0) : []; },
     liveTx: g => `ラウンド${Math.min(g.st.round, LM_ROUNDS)}/${LM_ROUNDS}` },
-  { id: "wd", name: "WYRDSTONE", en: "THE STONES OF FATE", players: "2〜5人", time: "45〜60分",
-    desc: "運命の力wpを集め、神話の魔獣20体に属性キューブを付けて育てる。20面の属性ダイスで出た目のキューブを持つ人は全員wpを獲得。秘宝の★の合計が最初に8以上になった人の勝ち。",
+  { id: "wd", name: "WARDENS OF RELIC", en: "THE GUARDIANS OF TREASURE", players: "2〜5人", time: "45〜60分",
+    desc: "守護者の力wp（Wardens Point）を集め、神話の魔獣20体に属性キューブを付けて育てる。20面の属性ダイスで出た目のキューブを持つ人は全員wpを獲得。秘宝の★の合計が最初に8以上になった人の勝ち。",
     icon: () => WD_ICON, list: () => wdGames(), live: () => wdLive(), myTurn: g => wdMyTurn(g),
     start: () => openWdNew(), open: g => openWd(g.id),
     winners: g => (g.st && g.st.wins) || [],
@@ -3444,7 +3444,7 @@ const ART = {
 function viewShelf(st){
   const S = stages(), list = GAMES.filter(gm => S[gm.id] === st);
   const dev = st === "dev";
-  let h = `<div class="shelf-hd ${st}"><span class="big">THE STONES OF FATE</span><h2>WYRDSTONE</h2><p>運命の石をめぐる、神話の魔獣たちの争奪戦</p></div>`;
+  let h = `<div class="shelf-hd ${st}"><span class="big">THE GUARDIANS OF TREASURE</span><h2>WARDENS<br>OF RELIC</h2><p>秘宝をめぐる、神話の魔獣たちの争奪戦</p></div>`;
   // 自分が参加している対戦中のゲーム
   const mine = list.flatMap(gm => gm.live().filter(g => me && (g.players || []).includes(me)).map(g => ({ gm, g })));
   h += mine.map(({ gm, g }) => `<button class="livebar" data-gopen="${gm.id}" data-gid="${g.id}">${gm.icon()}<div><b><span class="livedot"></span>${gm.name} 対戦中</b><small>${gm.myTurn(g) ? `<em class="yt">あなたの番！</em>` : ""}${esc(gm.liveTx(g))}</small></div><span class="go">JOIN</span></button>`).join("");
@@ -3501,7 +3501,7 @@ function render(){
   // タブのバッジ：自分の番のゲーム数
   const S = stages();
   ["done"].forEach(st => { const n = GAMES.filter(gm => S[gm.id] === st).reduce((a, gm) => a + gm.live().filter(g => gm.myTurn(g)).length, 0); const b = $(`#tabs [data-tab="${st}"] .bd`); b.hidden = !n; b.textContent = n; });
-  if (!db.players.length){ v.innerHTML = `<div class="hero"><h2>ようこそ WYRDSTONE へ</h2><p>まずは遊ぶメンバーを登録しましょう。</p><button class="cta" data-act="players">START<small>プレイヤーを登録する</small></button></div>`; bind(v); return; }
+  if (!db.players.length){ v.innerHTML = `<div class="hero"><h2>ようこそ WARDENS OF RELIC へ</h2><p>まずは遊ぶメンバーを登録しましょう。</p><button class="cta" data-act="players">START<small>プレイヤーを登録する</small></button></div>`; bind(v); return; }
   v.innerHTML = tab === "rec" ? viewRecords() : viewShelf(tab);
   bind(v);
   setTimeout(cpuKick, 0);
@@ -3581,7 +3581,7 @@ function openSettings(){
     <button data-m="share">アプリのリンクを共有<span></span></button>
     <button data-m="reload">最新の状態に更新<span></span></button>
     ${CFG_URL ? "" : `<button data-m="conn">接続先（Supabase）を変える<span>この端末のみ</span></button>`}
-  </div><p class="verline">WYRDSTONE ${APP_VER}</p>`);
+  </div><p class="verline">WARDENS OF RELIC ${APP_VER}</p>`);
   s.querySelector('[data-m="me"]').onclick = openMe;
   s.querySelector('[data-m="players"]').onclick = openPlayers;
   s.querySelector('[data-m="share"]').onclick = shareLink;
