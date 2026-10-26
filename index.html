@@ -1037,6 +1037,177 @@ details.wdrc tr.sig th,details.wdrc tr.sig td{background:rgba(255,201,60,.14)}
 .stp{font-style:normal;font-family:var(--wcz);font-weight:900;font-size:11px;color:var(--wgold);margin-left:2px}
 .stp small{font-size:8.5px;color:var(--wmute)}
 .wdmeh .stp{font-size:13px}
+/* ======================= v4：卓のリニューアル ======================= */
+/* キャラの絵（画像） */
+img.wdart{display:block;width:100%;height:100%;object-fit:cover;-webkit-user-drag:none}
+.wdemb>img.wdart{position:absolute;inset:0}
+.wdmkc .ar,.wdcard .ar{position:relative}
+.wdmkc .ar img.wdart,.wdcard .ar img.wdart{position:absolute;inset:0;object-position:50% 25%}
+/* 手元のキャラ：属性の色に染まる（無属性は色なし） */
+.wdtw{position:relative;display:block;width:100%;height:100%;overflow:hidden;isolation:isolate}
+.wdemb>.wdtw,.wdcard .ar>.wdtw,.wdmc2>.wdtw{position:absolute;inset:0}
+.wdtw>img,.wdtw>svg{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.78) contrast(1.08)}
+.wdtw.t>img,.wdtw.t>svg{filter:grayscale(1) brightness(1) contrast(1.12)}
+.wdtw.t::after{content:"";position:absolute;inset:0;background:var(--tg);mix-blend-mode:color;pointer-events:none}
+/* タイトル（長い名前でもかぶらない） */
+.wdttl b{font-size:11.5px;letter-spacing:.02em;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+/* 属性テーマの背景 */
+.wdg .wdbg{overflow:hidden}
+.wdth{position:absolute;inset:0;opacity:0;transition:opacity 1.1s ease}
+.wdth.on{opacity:1}
+.wdth .h{position:absolute;inset:0;overflow:hidden;--c:#E07CFF;--d1:#140A2C;--d2:#0B0618;
+  background:radial-gradient(130% 55% at 50% 108%,color-mix(in srgb,var(--c) 58%,transparent),transparent 70%),radial-gradient(90% 45% at 50% -8%,color-mix(in srgb,var(--c) 40%,transparent),transparent 72%),linear-gradient(180deg,var(--d1),var(--d2))}
+.wdth .h::after{content:"";position:absolute;inset:-50%;opacity:.6;background:var(--fx,none);background-size:var(--fs,auto);animation:var(--an,none)}
+.wdth .h[data-el="炎"]{--c:#FF5A3C;--d1:#2E0905;--d2:#120303;--fx:radial-gradient(2px 2px at 15% 30%,#FFB347,transparent 70%),radial-gradient(1.5px 1.5px at 62% 12%,#FF7A2E,transparent 70%),radial-gradient(2.5px 2.5px at 82% 44%,#FFD36B,transparent 70%),radial-gradient(1.5px 1.5px at 35% 66%,#FFB347,transparent 70%),radial-gradient(2px 2px at 72% 82%,#FF5A3C,transparent 70%);--fs:180px 180px;--an:wdrise 10s linear infinite}
+.wdth .h[data-el="水"]{--c:#3FA9FF;--d1:#04162E;--d2:#020814;--fx:repeating-radial-gradient(ellipse at 50% 120%,transparent 0 22px,rgba(127,216,255,.10) 22px 24px);--an:wdsway 8s ease-in-out infinite alternate}
+.wdth .h[data-el="木"]{--c:#4FD06A;--d1:#06220F;--d2:#020C05;--fx:radial-gradient(3px 1.6px at 20% 30%,#8BF0A0,transparent 70%),radial-gradient(2.4px 1.4px at 70% 20%,#4FD06A,transparent 70%),radial-gradient(3px 1.6px at 45% 75%,#B6FF9E,transparent 70%),radial-gradient(1.5px 1.5px at 85% 60%,#E8FFD0,transparent 70%);--fs:160px 160px;--an:wdrise 16s linear infinite}
+.wdth .h[data-el="雷"]{--c:#FFD23F;--d1:#1E1A08;--d2:#0A0812;--fx:repeating-linear-gradient(115deg,transparent 0 46px,rgba(255,232,120,.12) 46px 48px,transparent 48px 90px);--an:wdflick 2.6s steps(1) infinite}
+.wdth .h[data-el="闇"]{--c:#9B5CFF;--d1:#0E0620;--d2:#030108;--fx:radial-gradient(30% 18% at 78% 30%,rgba(210,180,255,.22),transparent 70%),radial-gradient(1px 1px at 20% 20%,#fff,transparent),radial-gradient(1px 1px at 60% 70%,#C9B0FF,transparent);--fs:auto,140px 140px,120px 120px;--an:wdpulse 6s ease-in-out infinite alternate}
+.wdth .h[data-el="龍"]{--c:#FF9A2E;--d1:#2A1405;--d2:#0E0602;--fx:radial-gradient(circle at 50% 100%,transparent 9px,rgba(255,180,90,.12) 10px 11px,transparent 12px);--fs:24px 15px;--an:wdsway 12s ease-in-out infinite alternate}
+.wdth .h[data-el="覇"]{--c:#E8455F;--d1:#2A0610;--d2:#0C0205;--fx:repeating-linear-gradient(135deg,rgba(255,210,130,.08) 0 2px,transparent 2px 28px);--an:wdrise 20s linear infinite}
+.wdth .h[data-el="天"]{--c:#F6EFC8;--d1:#2C2714;--d2:#0F0D08;--fx:repeating-conic-gradient(from 0deg at 50% 30%,rgba(255,250,220,.12) 0 4deg,transparent 4deg 15deg);--an:wdrot 30s linear infinite}
+.wdth .h[data-el="幻"]{--c:#E07CFF;--d1:#220B2E;--d2:#0A0412;--fx:conic-gradient(from 0deg at 50% 50%,rgba(255,120,220,.14),rgba(120,200,255,.14),rgba(255,240,150,.12),rgba(160,255,200,.12),rgba(255,120,220,.14));--an:wdrot 24s linear infinite}
+@keyframes wdrise{to{transform:translateY(-180px)}}
+@keyframes wdsway{from{transform:translateX(-4%)}to{transform:translateX(4%)}}
+@keyframes wdflick{0%,100%{opacity:.35}7%{opacity:.95}9%{opacity:.4}52%{opacity:.35}54%{opacity:.85}56%{opacity:.35}}
+@keyframes wdpulse{from{opacity:.3}to{opacity:.75}}
+@keyframes wdrot{to{transform:rotate(360deg)}}
+/* 2つの属性が拮抗 */
+.wdth.dual .h1{clip-path:polygon(0 0,62% 0,38% 100%,0 100%)}
+.wdth.dual .h2{clip-path:polygon(62% 0,100% 0,100% 100%,38% 100%)}
+.wdth .seam{position:absolute;inset:0;clip-path:polygon(60.6% 0,63.4% 0,39.4% 100%,36.6% 100%);background:linear-gradient(180deg,#fff,var(--a) 25%,#fff 50%,var(--b) 75%,#fff);animation:wdflick 1.4s steps(1) infinite}
+/* 卓：テーマが透けて見えるように */
+.wdpod{background:linear-gradient(170deg,color-mix(in srgb,var(--pc) 16%,rgba(22,10,44,.78)),rgba(16,8,32,.78))}
+.wdme{background:linear-gradient(170deg,color-mix(in srgb,var(--pc) 15%,rgba(20,9,40,.86)),rgba(14,6,30,.86))}
+.wdfelt{justify-content:flex-start;gap:7px;container-type:inline-size;background:radial-gradient(90% 70% at 50% 45%,rgba(43,24,88,.55),rgba(18,10,40,.72));border-color:color-mix(in srgb,var(--th,#FFE7A3) 60%,transparent);box-shadow:inset 0 0 0 4px rgba(0,0,0,.2),inset 0 0 44px color-mix(in srgb,var(--th,#E07CFF) 32%,transparent),0 8px 30px rgba(0,0,0,.4);transition:border-color 1s,box-shadow 1s}
+.wdfelt .wdturn{justify-content:center;flex-wrap:wrap;row-gap:3px}
+.wdfelt .wdchartb{margin-top:auto}
+.wdfc{display:inline-flex;align-items:center;gap:2px;font-size:10.5px;font-weight:900;padding:1px 7px 1px 3px;border-radius:999px;background:color-mix(in srgb,var(--ac) 28%,rgba(0,0,0,.5));border:1px solid var(--ac);color:#fff}
+.wdfc .wdico{width:14px;height:14px}
+.wdfc.skip{--ac:#8A8FA3;padding-left:7px}
+.wdmid{min-height:200px}
+.wdgem .st .cmp{display:none}
+@container (max-width:250px){.wdgem .st .full{display:none}.wdgem .st .cmp{display:inline}.wdgem .st{font-size:8.5px}}
+.wdgem.no{filter:grayscale(1) brightness(.5);opacity:.45}
+.wdgem.can .ok{position:absolute;top:-6px;left:50%;transform:translateX(-50%);font-style:normal;font-size:7.5px;font-weight:900;background:var(--wgold);color:#1A0E2E;border-radius:5px;padding:0 4px;white-space:nowrap;z-index:2;box-shadow:0 0 8px var(--wgold)}
+.wdgem.can{z-index:1}
+.wdgem.can .wdta{filter:drop-shadow(0 0 8px #FFE7A3) drop-shadow(0 0 3px #fff)}
+/* 相手の手元：カード型 */
+.wdpod .pslots{display:grid;grid-template-columns:repeat(4,minmax(0,54px));gap:4px;margin-top:2px}
+.wdside .wdpod .pslots{grid-template-columns:repeat(2,minmax(0,1fr))}
+.wdmc2{position:relative;display:block;aspect-ratio:4/5;border-radius:7px;overflow:hidden;background:#000;border:1.5px solid color-mix(in srgb,var(--ac,#8A8FA3) 80%,transparent);box-shadow:0 0 8px -3px var(--ac,#8A8FA3)}
+.wdmc2 .lv{position:absolute;left:2px;top:2px;font-family:var(--wcz);font-weight:900;font-size:9px;line-height:1;padding:1px 3px;border-radius:4px;background:rgba(0,0,0,.7);color:var(--wgold);z-index:2}
+.wdmc2 .lv::before{content:"Lv";font-size:6.5px;color:var(--wmute)}
+.wdmc2 .cs{position:absolute;left:0;right:0;bottom:2px;display:flex;justify-content:center;align-items:center;gap:2px;z-index:2}
+.wdmc2 .cs i{width:7px;height:7px;border-radius:2px;border:1px dashed rgba(220,200,255,.55);background:rgba(0,0,0,.5)}
+.wdmc2 .cs i.m{width:9px;height:9px}
+.wdmc2 .cs i.on{background:var(--sc);border:1px solid rgba(255,255,255,.75);box-shadow:0 0 5px var(--sc)}
+.wdmc2.sealed>.wdtw{filter:brightness(.45)}
+.wdmc2 .sl{position:absolute;left:0;right:0;top:38%;text-align:center;font-size:10px;background:rgba(232,69,95,.88);color:#fff;transform:rotate(-10deg);z-index:2}
+.wdmc2.fresh{box-shadow:0 0 0 1.5px #3FA9FF}
+.wdmc2.free{border:1.5px dashed rgba(200,180,255,.3);background:rgba(255,255,255,.02);box-shadow:none}
+.wdmc2.tre{background:radial-gradient(70% 60% at 50% 38%,rgba(255,231,163,.32),rgba(30,18,6,.95));border-color:rgba(255,231,163,.75);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
+.wdmc2.tre.r4,.wdmc2.tre.r5{border-color:rgba(255,180,240,.85);box-shadow:0 0 10px -2px rgba(255,160,240,.8)}
+.wdmc2.tre .wdta{width:72%;height:52%}
+.wdmc2.tre .st{font-size:8.5px;font-weight:900;color:var(--wgold);line-height:1}
+.wdmc2.tre .cs{position:static}
+/* 自分のカード */
+.wdcard .ar{background:#000}
+.wdcard .ar .n,.wdcard .ar .wdico.sig{z-index:2}
+/* フォーカスの元の位置 */
+.wdfocsrc{opacity:.22!important;outline:2px dashed rgba(255,255,255,.55);outline-offset:1px}
+/* 属性ダイス（画面の上に出る） */
+.wddl{position:fixed;inset:0;z-index:30;pointer-events:none;display:flex;align-items:center;justify-content:center}
+.wddl[hidden]{display:none}
+.wddl .sc{position:absolute;inset:0;background:radial-gradient(60% 34% at 50% 46%,rgba(6,2,14,.78),rgba(6,2,14,.35) 70%,transparent)}
+.wddl .box{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:-4vh}
+.wddl .hd{font-size:13px;font-weight:900;padding:5px 14px;border-radius:999px;background:rgba(10,6,24,.88);border:1px solid var(--wline);white-space:nowrap}
+.wddl .hd:empty{display:none}
+.wddl .dd{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;max-width:94vw}
+.wdbd{pointer-events:auto;position:relative;width:100px;display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:0;color:#fff;font-family:inherit;padding:0;transition:opacity .35s,transform .35s}
+.wdbd .wdd20{width:92px;height:92px;filter:drop-shadow(0 10px 18px rgba(0,0,0,.6)) drop-shadow(0 0 14px color-mix(in srgb,var(--ac) 65%,transparent))}
+.wdbd b{font-size:16px;font-weight:900;text-shadow:0 0 10px var(--ac),0 1px 3px #000}
+.wdbd small{font-size:11px;font-weight:900;color:var(--wgold);white-space:nowrap;text-shadow:0 1px 3px #000}
+.wdbd.pick .wdd20{animation:wdbdp 1.3s ease-in-out infinite;animation-delay:calc(var(--i) * 160ms)}
+@keyframes wdbdp{50%{transform:translateY(-7px) scale(1.06)}}
+.wdbd.chosen{transform:scale(1.28)}
+.wdbd.off{opacity:.2;transform:scale(.78)}
+.wdbd.land .wdd20{animation:wdland .45s ease-out}
+@keyframes wdland{40%{transform:scale(1.18)}}
+/* 目が決まったときの爆発 */
+.wdburst{position:fixed;width:0;height:0;z-index:8}
+.wdburst .ring{position:absolute;left:0;top:0;width:80px;height:80px;border-radius:50%;border:4px solid var(--ac);box-shadow:0 0 30px var(--ac),inset 0 0 20px var(--ac)}
+.wdburst .pt{position:absolute;left:-6px;top:-6px;width:12px;height:12px;border-radius:50%;background:var(--ac);box-shadow:0 0 12px var(--ac),0 0 3px #fff}
+.wdflash{position:fixed;inset:0;z-index:7;background:radial-gradient(circle at 50% 45%,color-mix(in srgb,var(--ac) 70%,#fff),color-mix(in srgb,var(--ac) 40%,transparent) 45%,transparent 78%);opacity:0;pointer-events:none}
+.wdanc{position:fixed;width:20px;height:20px}
+/* キャラにフォーカス */
+.wdfoc{position:fixed;inset:0;z-index:4}
+.wdfoc .dim{position:absolute;inset:0;background:rgba(5,2,12,.58)}
+.wdfoc .fc{position:absolute;left:50%;top:calc(var(--safe-t,0px) + 96px);transform:translateX(-50%);width:min(380px,95vw);display:flex;gap:10px;align-items:flex-start}
+.wdfoc .fcard{position:relative;flex:none;width:118px;border-radius:14px;overflow:hidden;background:#120826;border:2px solid var(--cc);box-shadow:0 0 0 1px rgba(255,255,255,.15),0 0 32px -4px var(--cc),0 18px 40px rgba(0,0,0,.6);transform-origin:top left}
+.wdfoc .fcard .ar{position:relative;display:block;width:100%;aspect-ratio:4/5;background:#000}
+.wdfoc .fcard .ar>.wdtw,.wdfoc .fcard .ar>img{position:absolute;inset:0}
+.wdfoc .fcard .lv{position:absolute;left:5px;top:5px;font-family:var(--wcz);font-weight:900;font-size:11px;padding:1px 6px;border-radius:6px;background:rgba(0,0,0,.7);color:var(--wgold)}
+.wdfoc .fcard .n{display:block;text-align:center;font-size:13px;font-weight:900;padding:4px 4px 0}
+.wdfoc .fcard .sl{display:flex;justify-content:center;align-items:center;gap:4px;padding:4px 0 7px}
+.wdfoc .fcard .sl i{width:21px;height:21px;border-radius:6px;display:grid;place-items:center;border:1px dashed rgba(200,180,255,.4)}
+.wdfoc .fcard .sl i.m{width:25px;height:25px}
+.wdfoc .fcard .sl i.on{background:linear-gradient(160deg,color-mix(in srgb,var(--sc) 45%,#1A0E2E),#160B2C);border:1px solid var(--sc)}
+.wdfoc .fcard .sl i .wdico{width:15px;height:15px;--ac:var(--sc)}
+.wdfoc .fcard .sl i.act{box-shadow:0 0 0 2px #fff,0 0 16px var(--sc);animation:wdfsa .9s ease-in-out infinite}
+@keyframes wdfsa{50%{transform:scale(1.18)}}
+.wdfoc .fcard.dye .ar{animation:wddye 1.1s ease-out}
+@keyframes wddye{0%{filter:brightness(2.4) saturate(2)}100%{filter:none}}
+.wdcap2{flex:1;min-width:0;border-radius:14px;padding:9px 11px;background:linear-gradient(160deg,color-mix(in srgb,var(--ac) 30%,#160B2C),rgba(14,6,30,.97));border:1px solid color-mix(in srgb,var(--ac) 70%,transparent);box-shadow:0 0 24px -6px var(--ac),0 14px 30px rgba(0,0,0,.5)}
+.wdcap2 .hd small{display:block;font-size:10.5px;margin-bottom:1px}
+.wdcap2 .hd b{font-size:15px;font-weight:900;margin-right:5px}
+.wdcap2 .hd em{font-style:normal;font-size:11px;font-weight:900;padding:2px 7px;border-radius:7px;display:inline-flex;align-items:center;gap:3px;vertical-align:2px;background:color-mix(in srgb,var(--sc,var(--ac)) 30%,transparent);border:1px solid var(--sc,var(--ac))}
+.wdcap2 .hd em .wdico{width:13px;height:13px;--ac:var(--sc)}
+.wdcap2 .hd em.act{background:var(--wgold);color:#1A0E2E;border-color:transparent}
+.wdcap2 .hd em.none{background:#5A5170;color:#fff;border-color:transparent}
+.wdcap2 .tx{margin:6px 0 0;font-size:12px;line-height:1.55;color:#E6DDFF}
+.wdcap2 .tx .cl{transition:opacity .25s,color .25s,background .25s;border-radius:4px}
+.wdcap2 .tx.has .cl{opacity:.42}
+.wdcap2 .tx.has .cl.hi{opacity:1;color:#fff;background:linear-gradient(90deg,color-mix(in srgb,var(--ac) 45%,transparent),color-mix(in srgb,var(--ac) 20%,transparent));box-shadow:0 0 0 1px color-mix(in srgb,var(--ac) 70%,transparent),0 0 12px color-mix(in srgb,var(--ac) 50%,transparent)}
+.wdcap2 .big{margin:7px 0 2px;font-size:16px;font-weight:900;display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.wdcap2 .big .wdico{width:20px;height:20px}
+.wdcap2 .big .ar{font-size:11px;color:var(--wmute)}
+.wdcap2 .sub{margin:5px 0 0;font-size:11.5px;line-height:1.55;color:#E6DDFF}
+.wdcap2 .res{margin-top:5px;display:flex;align-items:baseline;justify-content:space-between;gap:8px;font-size:12.5px;font-weight:900;color:#8BFFB0;animation:wdfin .3s both}
+.wdcap2 .res .calc{font-size:11px;color:#E8E0FF;font-weight:700;font-family:var(--wcz)}
+.wdcap2 .res b{font-size:14px}
+.wdcap2 .res.rob,.wdcap2 .res.minus{color:#FF9AAE}
+.wdcap2 .res.bf{color:#FFE7A3}.wdcap2 .res.none{color:var(--wmute)}
+.wdcap2 .pn{color:var(--pc)}
+.wdcap2 .buyc{display:flex;gap:8px;align-items:center;margin-top:7px}
+.wdcap2 .buyc b{display:block;font-size:14px}.wdcap2 .buyc small{font-size:10.5px;color:var(--wmute)}
+.wdcl{position:fixed;z-index:6;border-radius:9px;overflow:hidden;pointer-events:none}
+.wdcl img{width:100%;height:100%;object-fit:cover;display:block}
+/* ポップアップ：×はスクロールしても右上に */
+.wdpin>.wdx{position:sticky;top:0;right:auto;float:right;margin:-6px -4px 4px 8px;background:rgba(36,18,63,.95);box-shadow:0 2px 10px rgba(0,0,0,.4)}
+.wdpin.act>.wdx{float:none;align-self:flex-end;margin:-6px -4px -34px 0;flex:none}
+/* 「この行動はしない」「手放す」の文字を上下中央に */
+.wdas-row.foot .wdbtn{justify-content:center;min-height:54px}
+.wdbtn.danger.strong{background:#E8455F;color:#fff;border-color:#E8455F}
+.wdbtn.danger.strong small{color:#FFE0E6}
+/* 属性付与：いまの3枠 */
+.wdas-cur{margin-bottom:8px}
+.wdas-cur>small{display:block;font-size:10.5px;color:var(--wmute);margin-bottom:5px}
+.wdas-cur .sl3{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:6px}
+.wdsl3{display:flex;flex-direction:column;align-items:center;gap:2px;padding:7px 4px;border-radius:12px;border:1px dashed rgba(200,180,255,.4);background:rgba(255,255,255,.03);color:var(--wink);font-family:inherit}
+.wdsl3 b{font-size:12.5px;font-weight:900}
+.wdsl3 small{font-size:9.5px;color:var(--wmute)}
+.wdsl3 .wdico{width:22px;height:22px}
+.wdsl3.have{border:1px solid var(--ac);background:linear-gradient(160deg,color-mix(in srgb,var(--ac) 35%,#1A0E2E),#160B2C);opacity:1;color:#fff}
+.wdsl3.free.on{border:2px solid var(--wgold);background:rgba(255,231,163,.14);box-shadow:0 0 14px -2px var(--wgold)}
+.wdas-cur .h{display:block;margin-top:4px;font-size:10.5px;color:var(--wmute);min-height:1em}
+/* 確認ダイアログ */
+.wdpin.cf{max-width:360px}
+.wdcf{padding:4px 2px 0;text-align:center;clear:both}
+.wdcf b{display:block;font-size:17px;font-weight:900;margin:2px 0 8px}
+.wdcf p{margin:0 0 6px;font-size:12.5px;line-height:1.65;color:#E6DDFF}
+.wdcf p b{display:inline;font-size:inherit;margin:0;color:var(--wgold)}
+.wdcf .wdas-row .wdbtn{justify-content:center;min-height:48px}
 
 /* ===== 専用アプリ用 ===== */
 nav .ind{width:calc((100% - 12px) / 2)}
@@ -1070,7 +1241,7 @@ nav .ind{width:calc((100% - 12px) / 2)}
    ============================================================ */
 const CFG_URL = "https://mspzgfkommmuucjvdvbm.supabase.co";
 const CFG_KEY = "sb_publishable_sj2rETV0MdsP1hA56C70kQ_F5eS1Via";
-const APP_VER = "v3";
+const APP_VER = "v4";
 
 const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const lsSet = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
@@ -1093,7 +1264,7 @@ const CPU_IDS = ["cpu1", "cpu2", "cpu3", "cpu4", "cpu5", "cpu6"];
 const CPU_COLORS = ["#6B7A8F", "#9A6B4F", "#4F8A6B", "#7A5C99", "#B0703A", "#3F6E9A"];
 const isCpu = id => typeof id === "string" && /^cpu\d$/.test(id);
 const cpuPlayer = id => isCpu(id) ? { id, name: `🤖CPU${id.slice(3)}`, color: CPU_COLORS[(+id.slice(3) - 1) % CPU_COLORS.length], cpu: true } : undefined;
-const player = id => db.players.find(p => p.id === id) || cpuPlayer(id);
+const player = id => db.players.find(p => p.id === id) || (db.wdPlayers || []).find(p => p.id === id) || cpuPlayer(id);
 const pname = id => (player(id) || {}).name || "（不明）";
 const pcolor = id => (player(id) || {}).color || "#5A6378";
 const setting = k => (db.app_settings.find(s => s.key === k) || {}).value;
@@ -1113,34 +1284,41 @@ function pushCall(){}
 /* ---------- データ ---------- */
 async function loadTable(t){
   if (!sb) return;
-  const { data, error } = await sb.from(t).select("*");
+  const cl = t === "wd_games" && typeof sbWd !== "undefined" && sbWd ? sbWd : sb;
+  const { data, error } = await cl.from(t).select("*");
   if (error && GAME_TBL.includes(t)){ console.warn(t, error); db[t] = db[t] || []; return; }
   if (error) throw error;
   db[t] = data || [];
   if (t === "players") db.players.sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0) || String(a.created_at).localeCompare(String(b.created_at)));
 }
-async function loadAll(){ await Promise.all(TABLES.map(loadTable)); loaded = true; }
+async function loadAll(){
+  const extra = typeof sbWd !== "undefined" && sbWd && sbWd !== sb ? sbWd.from("players").select("*").then(r => { db.wdPlayers = r.data || []; }, () => {}) : null;
+  await Promise.all([...TABLES.map(loadTable), extra]); loaded = true;
+}
 const reloadTimer = {};
 const GAME_HOOK = { hx_games: () => [hxId, drawHx], sz_games: () => [szId, drawSz], lm_games: () => [lmId, drawLm], wd_games: () => [wdId, drawWd] };
 const inGame = () => !!(hxId || szId || lmId || wdId);
+/* リアルタイムで届いた変更を反映 */
+function rtChange(payload){
+  const t = payload.table;
+  if (!TABLES.includes(t)) return;
+  if (GAME_HOOK[t] && payload.eventType === "UPDATE" && payload.new && payload.new.id && payload.new.st){
+    const nw = payload.new, cur = (db[t] || []).find(x => x.id === nw.id);
+    if (cur && (cur.version || 1) >= (nw.version || 1)) return;      // 自分の保存のこだま
+    if (cur){ Object.assign(cur, nw); const [id, draw] = GAME_HOOK[t](); if (id === nw.id) draw(); else if (!inGame()) render(); turnBuzz(); setTimeout(cpuKick, 0); return; }
+  }
+  clearTimeout(reloadTimer[t]);
+  reloadTimer[t] = setTimeout(async () => {
+    try { await loadTable(t); if (!inGame()) render(); if (GAME_HOOK[t]) GAME_HOOK[t]()[1](); turnBuzz(); cpuKick(); } catch (e) { console.error(e); }
+  }, 120);
+}
 function subscribe(){
   if (!sb) return;
-  sb.channel("gamelab-all")
-    .on("postgres_changes", { event: "*", schema: "public" }, payload => {
-      const t = payload.table;
-      if (!TABLES.includes(t)) return;
-      if (GAME_HOOK[t] && payload.eventType === "UPDATE" && payload.new && payload.new.id && payload.new.st){
-        const nw = payload.new, cur = (db[t] || []).find(x => x.id === nw.id);
-        if (cur && (cur.version || 1) >= (nw.version || 1)) return;      // 自分の保存のこだま
-        if (cur){ Object.assign(cur, nw); const [id, draw] = GAME_HOOK[t](); if (id === nw.id) draw(); else if (!inGame()) render(); turnBuzz(); setTimeout(cpuKick, 0); return; }
-      }
-      clearTimeout(reloadTimer[t]);
-      reloadTimer[t] = setTimeout(async () => {
-        try { await loadTable(t); if (!inGame()) render(); if (GAME_HOOK[t]) GAME_HOOK[t]()[1](); turnBuzz(); cpuKick(); } catch (e) { console.error(e); }
-      }, 120);
-    })
-    .subscribe();
+  sb.channel("gamelab-all").on("postgres_changes", { event: "*", schema: "public" }, rtChange).subscribe();
+  // WARDENS OF RELIC を別のSupabaseで動かしているとき（ボドゲOnline）
+  if (typeof sbWd !== "undefined" && sbWd && sbWd !== sb) sbWd.channel("gamelab-wd").on("postgres_changes", { event: "*", schema: "public", table: "wd_games" }, rtChange).subscribe();
 }
+
 async function q(promise, what){
   const { data, error } = await promise;
   if (error){ fail(error, what); return null; }
@@ -1885,7 +2063,7 @@ function wdAct(st, p, cid, kind, arg){
     wdPay(st, p, cost); const nc = wdNewChar(st, k); nc.fresh = st.no; st.ch[p].push(nc);
     const dl0 = st.deck.length;
     st.mk[i] = st.deck.length ? st.deck.shift() : null;
-    wdFx(st, { k: "buy", p, cid: nc.id, ck: k, v: cost, i, nk: st.mk[i], c: JSON.parse(JSON.stringify(nc)), dl0, dl1: st.deck.length, act: 1 });
+    wdFx(st, { k: "buy", p, cid: nc.id, by: cid, ck: k, v: cost, i, nk: st.mk[i], c: JSON.parse(JSON.stringify(nc)), dl0, dl1: st.deck.length, act: 1 });
     wdL(st, `${wdNm(p)}：${WD_CH[k].n}を獲得（${cost}wp）`);
   } else if (kind === "earn"){
     const d = wdRoll(), m = wdMult(c.s[0], d), n = Math.round(wdLvWp(c) * m);
@@ -1893,7 +2071,7 @@ function wdAct(st, p, cid, kind, arg){
     wdGain(st, p, n, `wp獲得（${d}${m === 2 ? "：有利×2" : m === 0.5 ? "：不利×½" : ""}）`);
     wdL(st, `${wdNm(p)}：${wdDef(c).n}でwp獲得 → 目「${d}」${m === 2 ? "有利！" : m === 0.5 ? "不利…" : ""} +${n}wp`);
   } else if (kind === "skip"){
-    T.acts[cid] = 0; return true;
+    T.acts[cid] = 0; wdFx(st, { k: "skip", p, cid }); return true;
   } else return false;
   T.acts[cid]--; if (T.one) T.lock = cid;
   return true;
@@ -2461,10 +2639,10 @@ const WDA = (() => {
       sparks([[14, 24, 1.2], [30, 12, 1], [110, 70, 1.1]], "#FFFFFF") }
   };
 })();
+/* キャラの絵：Geminiで描いたイラスト（ch00.webp〜ch19.webp：index.html と同じ場所に置く） */
 function wdCharArt(k, cls = ""){
-  const a = WDA[k]; if (!a) return "";
-  const d = WD_CH[k], rim = WD_COL[d.sig], id = "wdca" + k;
-  return `<svg class="wdart ${cls}" viewBox="0 0 120 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><radialGradient id="${id}" cx=".5" cy=".36" r=".78"><stop offset="0" stop-color="${a.bg[0]}"/><stop offset=".38" stop-color="${a.bg[1]}"/><stop offset="1" stop-color="${a.bg[2]}"/></radialGradient><linearGradient id="${id}v" x1="0" y1="0" x2="0" y2="1"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".75"/></linearGradient></defs><rect width="120" height="150" fill="url(#${id})"/>${a.d(rim)}<ellipse cx="30" cy="146" rx="50" ry="16" fill="${rim}" opacity=".12"/><ellipse cx="92" cy="150" rx="46" ry="14" fill="${rim}" opacity=".1"/><rect width="120" height="150" fill="url(#${id}v)"/></svg>`;
+  if (!WD_CH[k]) return "";
+  return `<img class="wdart ${cls}" src="ch${String(k).padStart(2, "0")}.webp" alt="" decoding="async" draggable="false">`;
 }
 /* ---------- 20面ダイス ---------- */
 const WD_D20 = (() => {
@@ -2487,11 +2665,14 @@ const wdById = id => wdGames().find(g => g.id === id);
 function wdMyTurn(g){ const st = g && g.st; return !!(st && st.wd && g.status === "playing" && me && wdActors(st).includes(me)); }
 /* ---------- サーバー（Edge Function：wd-move）に手を送る ----------
    ルールの判定・ダイス・コンピューターの手番はすべてサーバーが行う（Web版とUnity版で共通） */
-const WD_FN = () => SUPABASE_URL + "/functions/v1/wd-move";
+/* WARDENS OF RELIC のサーバー（専用アプリは自分のSupabase、ボドゲOnlineは専用アプリのSupabaseを使う：同じ対戦に参加できる） */
+const WD_BASE = typeof WD_REMOTE !== "undefined" && WD_REMOTE ? WD_REMOTE : { url: SUPABASE_URL, key: SUPABASE_KEY };
+const sbWd = WD_BASE.url === SUPABASE_URL ? sb : (window.supabase ? supabase.createClient(WD_BASE.url, WD_BASE.key, { auth: { persistSession: false } }) : null);
+const WD_FN = () => WD_BASE.url + "/functions/v1/wd-move";
 async function wdCall(body){
   for (let tries = 0; tries < 3; tries++){
     try {
-      const res = await fetch(WD_FN(), { method: "POST", headers: { "Content-Type": "application/json", apikey: SUPABASE_KEY }, body: JSON.stringify(body) });
+      const res = await fetch(WD_FN(), { method: "POST", headers: { "Content-Type": "application/json", apikey: WD_BASE.key }, body: JSON.stringify(body) });
       const txt = await res.text(); let j = null; try { j = JSON.parse(txt); } catch (e) {}
       if (j) return j;
       if (res.status === 404) return { ok: false, error: "サーバー（wd-move）が見つかりません。Edge Function をデプロイしてください" };
@@ -2551,12 +2732,62 @@ const WD_ICON = `<span class="gic wdi"><svg viewBox="0 0 64 64" aria-hidden="tru
 const wdEmb = k => { const d = WD_CH[k]; return `<span class="wdemb" style="--ac:${WD_COL[d.sig]}">${wdCharArt(k)}${wdIco(d.sig, "sig")}</span>`; };
 const wdTypeB = d => `<i class="wdty t${{ 低: 1, 中: 2, 高: 3 }[d.t]}">${d.t}</i>`;
 const wdStarTx = r => "★".repeat(r);
+/* ---------- 手元のキャラの色：付いている属性に染まる（無属性なら色なし）。山札・図鑑・ルールでは得意属性の色のまま ---------- */
+function wdTintBg(c){
+  const m = c.s[0], subs = c.s.slice(1).filter(Boolean);
+  if (!m && !subs.length) return "";
+  const parts = [];
+  if (m) parts.push([WD_COL[m], subs.length ? 60 : 100]);
+  subs.forEach(a => parts.push([WD_COL[a], (m ? 40 : 100) / subs.length]));
+  let at = 0; const stops = [];
+  parts.forEach(([col, w], i) => { const a0 = at, a1 = at + w; stops.push(`${col} ${(a0 + (i ? 3 : 0)).toFixed(1)}%`, `${col} ${(a1 - (i < parts.length - 1 ? 3 : 0)).toFixed(1)}%`); at = a1; });
+  return `linear-gradient(165deg,${stops.join(",")})`;
+}
+const wdCAc = c => WD_COL[c.s[0] || c.s.find(Boolean) || "無"];
+const wdArtC = (c, cls = "") => { const tg = wdTintBg(c); return `<span class="wdtw ${tg ? "t" : "g"} ${cls}"${tg ? ` style="--tg:${tg}"` : ""}>${wdCharArt(c.k)}</span>`; };
+const wdEmbC = c => `<span class="wdemb wdembc" style="--ac:${wdCAc(c)}">${wdArtC(c)}</span>`;
+
+/* ---------- 属性テーマ：出た目の属性に背景が染まる（次の目が決まるまで） ---------- */
+let wdThCur = "";
+function wdSetTheme(a, b){
+  const key = (a || "") + (b ? "|" + b : "");
+  if (key === wdThCur) return; wdThCur = key;
+  const root = document.getElementById("wdg"), bg = root && root.querySelector(".wdbg"); if (!bg) return;
+  root.style.setProperty("--th", a ? WD_COL[a] : "#E07CFF"); root.style.setProperty("--th2", b ? WD_COL[b] : a ? WD_COL[a] : "#E07CFF");
+  const el = document.createElement("div"); el.className = "wdth" + (b ? " dual" : "");
+  el.innerHTML = !a ? "" : b ? `<i class="h h1" data-el="${a}"></i><i class="h h2" data-el="${b}"></i><i class="seam" style="--a:${WD_COL[a]};--b:${WD_COL[b]}"></i>` : `<i class="h" data-el="${a}"></i>`;
+  bg.appendChild(el); void el.offsetWidth; el.classList.add("on");
+  const old = [...bg.querySelectorAll(".wdth")].filter(x => x !== el);
+  setTimeout(() => old.forEach(x => x.remove()), 1200);
+}
+function wdThemeOf(st, upto = Infinity){
+  const fx = (st.fx || []).filter(e => e.n <= upto);
+  let f = null; for (let i = fx.length - 1; i >= 0; i--) if (fx[i].k === "face"){ f = fx[i]; break; }
+  if (!f) return { a: upto === Infinity && st.T && st.T.face ? st.T.face : null };
+  let b = null;
+  if (fx.some(e => e.n > f.n && e.k === "buff" && e.t === "もう1つの目でも行動")){
+    let r = null; for (let i = fx.length - 1; i >= 0; i--) if (fx[i].k === "roll" && fx[i].n < f.n){ r = fx[i]; break; }
+    b = r ? r.dice.find(x => x !== f.a) || null : null;
+  }
+  return { a: f.a, b };
+}
+
+/* ---------- 確認ダイアログ ---------- */
+function wdConfirm(title, body, ok, danger){
+  return new Promise(res => {
+    let done = false; const fin = v => { if (done) return; done = true; el.remove(); res(v); };
+    const el = wdPopup(`<div class="wdcf"><b>${title}</b><p>${body}</p><div class="wdas-row"><button class="wdbtn ghost" data-no>やめる</button><button class="wdbtn ${danger ? "danger strong" : "main"}" data-ok>${ok}</button></div></div>`, "cf", true);
+    el.querySelector("[data-no]").onclick = () => fin(false);
+    el.querySelector("[data-ok]").onclick = () => fin(true);
+    el.addEventListener("click", e => { if (e.target === el || e.target.closest("[data-wdx]")) fin(false); });
+  });
+}
 
 /* ---------- 状態 ---------- */
 let wdId = null, wdSeenFx = {}, wdAnimUntil = 0;
 const wdGuideOn = () => lsGet("gl:wdGuide") !== "0";
 function openWd(id){ const g0 = wdById(id); wdId = id; if (g0 && g0.st) wdSeenFx[id] = g0.st.fxn || 0; $("#wdg").hidden = false; document.body.style.overflow = "hidden"; drawWd(); }
-function closeWd(){ if (wdPlay) wdSkip(); wdId = null; $("#wdg").hidden = true; document.body.style.overflow = ""; ["wdPop", "wdPop2"].forEach(i => { const h = document.getElementById(i); if (h) h.remove(); }); const l = document.getElementById("wdFxL"); if (l) l.innerHTML = ""; render(); }
+function closeWd(){ if (wdPlay) wdSkip(); wdDiceHide(false); wdThCur = ""; document.querySelectorAll("#wdg .wdth").forEach(x => x.remove()); wdId = null; $("#wdg").hidden = true; document.body.style.overflow = ""; ["wdPop", "wdPop2"].forEach(i => { const h = document.getElementById(i); if (h) h.remove(); }); const l = document.getElementById("wdFxL"); if (l) l.innerHTML = ""; render(); }
 const confirmWd = m => { try { return window.confirm(m); } catch (e) { return true; } };
 
 /* ---------- キャラの効果一覧（ポップアップ） ---------- */
@@ -2567,7 +2798,7 @@ function wdCharPop(k, c, st, owner){
     return `<div class="wdeff ${a === d.sig ? "sig" : ""} ${c && c.s.includes(a) ? "have" : ""}" style="--ac:${WD_COL[a]}"><span class="wdea">${a === "無" ? "<b>無</b>" : wdIco(a)}<em>${a}</em></span><p>${esc(d.e[a].tx)}</p><span class="wdec">${a === "無" ? "" : `${cost}<small>wp</small>`}</span></div>`;
   }).join("");
   const lv = WD_LVT[d.t].map((v, i) => `<span class="${c && c.lv === i + 1 ? "on" : ""}"><small>Lv${i + 1}</small>${v}</span>`).join("");
-  return wdPopup(`<div class="wdcp-hd" style="--ac:${WD_COL[d.sig]}">${wdEmb(k)}<div><small>${d.th}・${esc(d.im)}</small><b>${d.n}</b><span>${wdTypeB(d)}得意 ${d.sig}・干渉 ${d.it}・獲得 ${d.cost}wp</span></div></div>
+  return wdPopup(`<div class="wdcp-hd" style="--ac:${c && owner ? wdCAc(c) : WD_COL[d.sig]}">${c && owner ? wdEmbC(c) : wdEmb(k)}<div><small>${d.th}・${esc(d.im)}</small><b>${d.n}</b><span>${wdTypeB(d)}得意 ${d.sig}・干渉 ${d.it}・獲得 ${d.cost}wp</span></div></div>
     <p class="wdcp-desc">${esc(d.desc)}</p>
     ${c ? `<div class="wdcp-slots">${c.s.map((a, i) => `<div>${wdCube(a, i === 0)}<small>${i === 0 ? "メイン" : `サブ${i}`}</small></div>`).join("")}</div>` : ""}
     <div class="wdcp-lv"><b>キャラLvごとのwp</b>${lv}</div>
@@ -2620,37 +2851,31 @@ const WD_LAY = { 0: [0, 0, 0], 1: [0, 1, 0], 2: [1, 0, 1], 3: [1, 1, 1], 4: [1, 
 const wdViewer = st => st.order.includes(me) ? me : st.order[0];
 const wdSpd = () => +(lsGet("gl:wdSpd") || 1) || 1;
 const WD_SPD_L = { .6: "ゆっくり", 1: "ふつう", 1.6: "はやい", 2.5: "さくさく" };
-const wdMini = (D, c) => {
-  const d = wdDef(c);
-  return `<div class="wdmc ${c.seal ? "sealed" : ""} ${c.fresh ? "fresh" : ""}" data-ch="${c.id}" style="--ac:${WD_COL[d.sig]}"><span class="e">${wdCharArt(c.k)}</span><span class="cs">${c.s.map((a, i) => `<i data-slot="${c.id}:${i}" class="${i === 0 ? "m" : ""} ${a ? "on" : ""}" style="--sc:${WD_COL[a || "無"]}"></i>`).join("")}</span><span class="lv">${c.lv}</span>${c.seal ? `<b class="sl">封</b>` : ""}</div>`;
-};
+/* 相手の手元：キャラも秘宝も同じ大きさのカード。空き枠は点線 */
+const wdMiniCard = c => `<div class="wdmc2 ${c.seal ? "sealed" : ""} ${c.fresh ? "fresh" : ""}" data-ch="${c.id}" style="--ac:${wdCAc(c)}">${wdArtC(c)}<span class="lv">${c.lv}</span><span class="cs">${c.s.map((a, i) => `<i data-slot="${c.id}:${i}" class="${i === 0 ? "m" : ""} ${a ? "on" : ""}" style="--sc:${WD_COL[a || "無"]}"></i>`).join("")}</span>${c.seal ? `<b class="sl">封</b>` : ""}</div>`;
+const wdMiniTre = t => { const td = wdTreDef(t.id); return `<div class="wdmc2 tre r${td.r}" data-tre="${t.id}">${wdTreArt(t.id)}<span class="st">★${td.r}</span><span class="cs">${t.cubes.map(a => `<i class="on" style="--sc:${WD_COL[a]}"></i>`).join("")}</span></div>`; };
 const wdGemMini = id => { const t = wdTreDef(id); return `<i class="tg art r${t.r}" title="${t.n}">${wdTreArt(id)}</i>`; };
 function wdPodH(D, p, side){
-  const cur = D.T && D.T.p === p;
+  const cur = D.T && D.T.p === p, free = Math.max(0, WD_SLOTS - D.ch[p].length - D.tre[p].length);
   return `<div class="wdpod ${side} ${cur ? "cur" : ""} ${D.sh[p] ? "shd" : ""}" data-seat="${p}" style="--pc:${pcolor(p)}">
     <div class="ph"><b class="nm">${esc(wdNm(p))}</b>${cur ? `<i class="tn">手番</i>` : ""}</div>
-    <div class="pw"><span class="wp" data-wp="${p}">${D.wp[p].toLocaleString()}</span><span class="tgs">${D.tre[p].map(t => wdGemMini(t.id)).join("")}<i class="stp">★${D.tre[p].reduce((n, t) => n + wdTreDef(t.id).r, 0)}<small>/${WD_WIN_STARS}</small></i></span></div>
-    <div class="pc">${D.ch[p].map(c => wdMini(D, c)).join("")}</div></div>`;
+    <div class="pw"><span class="wp" data-wp="${p}">${D.wp[p].toLocaleString()}</span><i class="stp">★${D.tre[p].reduce((n, t) => n + wdTreDef(t.id).r, 0)}<small>/${WD_WIN_STARS}</small></i></div>
+    <div class="pslots">${D.ch[p].map(wdMiniCard).join("")}${D.tre[p].map(wdMiniTre).join("")}${Array.from({ length: free }, () => `<i class="wdmc2 free"></i>`).join("")}</div></div>`;
 }
 function wdFeltH(D, st, live){
   const T = D.T, mineTre = live && T && T.p === me && T.ph === "tre" && !st.ask;
   const gems = WD_TRE.map(t => {
     const taken = !D.treL.includes(t.id), owner = taken ? D.order.find(q => D.tre[q].some(z => z.id === t.id)) : null;
-    const can = mineTre && !taken && wdCanTre(st, me, t.id).ok;
-    return `<button class="wdgem r${t.r} ${taken ? "taken" : ""} ${can ? "can" : ""}" data-tre="${t.id}" ${owner ? `style="--pc:${pcolor(owner)}"` : ""}>${wdTreArt(t.id)}<span class="st">${"★".repeat(t.r)}</span><span class="cb">${wdTreCb(st, t.id).map(a => `<i style="--sc:${WD_COL[a]}"></i>`).join("")}</span></button>`;
+    const can = mineTre && !taken && wdCanTre(st, me, t.id).ok, no = mineTre && !taken && !can;
+    return `<button class="wdgem r${t.r} ${taken ? "taken" : ""} ${can ? "can" : ""} ${no ? "no" : ""}" data-tre="${t.id}" ${owner ? `style="--pc:${pcolor(owner)}"` : ""}>${wdTreArt(t.id)}<span class="st"><span class="full">${"★".repeat(t.r)}</span><span class="cmp">★${t.r}</span></span><span class="cb">${wdTreCb(st, t.id).map(a => `<i style="--sc:${WD_COL[a]}"></i>`).join("")}</span>${can ? `<em class="ok">獲得できる</em>` : ""}</button>`;
   }).join("");
   const steps = ["ダイス", "行動", "選ぶ", "秘宝"];
   const cur = !T ? -1 : T.ph === "roll" || T.ph === "pick" ? 0 : T.ph === "eff" ? 1 : T.ph === "act" ? 2 : T.ph === "tre" ? 3 : -1;
-  const pickMine = live && T && T.ph === "pick" && st.T && st.T.pickBy === me && !st.ask;
-  const dice = T && T.dice && T.dice.length ? T.dice.map((a, i) => `<span class="wddie ${T.face === a && T.ph !== "pick" ? "chosen" : T.face && T.ph !== "pick" ? "off" : ""} ${pickMine ? "pick" : ""}" data-di="${a}" style="--ac:${WD_COL[a]}">${wdD20(a)}<b>${a}</b></span>`).join("") + (pickMine && st.T.nx && st.T.nx.anyFace ? `<button class="wddie any" id="wdAny">好き<b>な目</b></button>` : "")
-    : T && T.skip ? `<small class="skip">キューブなし<br>手順1はとばし</small>` : `<span class="wddie idle">${wdD20(null)}</span><span class="wddie idle">${wdD20(null)}</span>`;
+  const fc = T && T.face ? `<span class="wdfc" style="--ac:${WD_COL[T.face]}">${wdIco(T.face)}${T.face}</span>` : T && T.skip ? `<span class="wdfc skip">ダイスなし</span>` : "";
   const mkt = D.mk.map((k, i) => k == null ? `<span class="wdmkc empty"></span>` : `<span class="wdmkc" data-mk="${i}" style="--ac:${WD_COL[WD_CH[k].sig]}"><span class="ar">${wdCharArt(k)}</span><em>${WD_CH[k].cost}</em></span>`).join("");
   return `<div class="wdfelt" id="wdFelt">
+    <div class="wdturn" style="--pc:${T ? pcolor(T.p) : "#888"}">${T ? `<i class="dot"></i><b>${esc(wdNm(T.p))}</b><span class="ph">${steps.map((s, i) => `<i class="${i === cur ? "on" : i < cur ? "done" : ""}">${i + 1}</i>`).join("")}</span>${fc}` : `<b>準備中</b>`}</div>
     <div class="wdgems">${gems}</div>
-    <div class="wdtray" style="--pc:${T ? pcolor(T.p) : "#888"}">
-      <div class="wdturn">${T ? `<i class="dot"></i><b>${esc(wdNm(T.p))}</b><span class="ph">${steps.map((s, i) => `<i class="${i === cur ? "on" : i < cur ? "done" : ""}">${i + 1}</i>`).join("")}</span>` : `<b>準備中</b>`}</div>
-      <div class="wddice" id="wdDice">${dice}</div>
-    </div>
     <button class="wdchartb" id="wdChart" aria-label="属性の相性">${wdChart()}</button>
     <div class="wdmkt"><span class="wddeck" id="wdDeck"><b>${D.dl}</b><small>山札</small></span>${mkt}</div>
   </div>`;
@@ -2659,8 +2884,8 @@ function wdMeH(D, st, live){
   const p = wdViewer(st), T = D.T, mineAct = live && st.T && st.T.p === p && p === me && !st.ask;
   const cards = D.ch[p].map(c => {
     const d = wdDef(c), can = mineAct && wdCanAct(st, c.id), n = can ? st.T.acts[c.id] : 0, acting = live && st.T && st.T.p === p && st.T.acting[c.id];
-    return `<div class="wdcard ${can ? "can" : ""} ${acting ? "acting" : ""} ${c.seal ? "sealed" : ""}" data-ch="${c.id}" style="--ac:${WD_COL[d.sig]}">
-      <span class="ar">${wdCharArt(c.k)}<b class="n">${d.n}</b>${wdIco(d.sig, "sig")}</span><span class="lv"><em>Lv${c.lv}</em>${wdLvWp(c)}wp</span>
+    return `<div class="wdcard ${can ? "can" : ""} ${acting ? "acting" : ""} ${c.seal ? "sealed" : ""}" data-ch="${c.id}" style="--ac:${wdCAc(c)}">
+      <span class="ar">${wdArtC(c)}<b class="n">${d.n}</b>${wdIco(d.sig, "sig")}</span><span class="lv"><em>Lv${c.lv}</em>${wdLvWp(c)}wp</span>
       <span class="sl">${c.s.map((a, i) => `<span data-slot="${c.id}:${i}" class="wdcube ${a ? "" : "nul"} ${i === 0 ? "main" : ""}" style="--ac:${WD_COL[a || "無"]}">${a ? wdIco(a) : ""}</span>`).join("")}</span>
       ${can ? `<i class="wdact">${n}</i>` : ""}${c.seal ? `<b class="seal">行動封じ</b>` : ""}${c.fresh ? `<i class="wdnew">NEW</i>` : ""}</div>`;
   }).join("");
@@ -2673,11 +2898,11 @@ function wdMeH(D, st, live){
 function wdBarH(st, live){
   if (!live) return `<div class="wdbar play"><span class="pl" id="wdPlayTx">▶ 再生中</span><button class="wdbtn sm" id="wdSkip">スキップ ⏩</button></div>`;
   const T = st.T; if (!T || st.ask) return `<div class="wdbar wait"><span>${st.ask ? `${esc(wdNm(st.ask.pid))}が選んでいます…` : ""}</span></div>`;
-  if (T.ph === "pick" && T.pickBy === me) return `<div class="wdbar"><span class="lbl">目を選ぶ（卓のダイスをタップしてもOK・長押しで詳しく）</span>${wdFaceOpts(st).map(a => { const n = wdPayFor(st, me, a), acts = st.T.p === me ? st.ch[me].filter(c => !c.seal && c.s.includes(a)).length : 0; return `<button class="wdface-b" data-face="${a}" style="--ac:${WD_COL[a]}">${wdIco(a)}<b>${a}</b><small>${n ? `+${n}` : "　"}</small>${acts ? `<i>${acts}体行動</i>` : ""}</button>`; }).join("")}</div>`;
+  if (T.ph === "pick" && T.pickBy === me) return `<div class="wdbar"><span class="lbl">画面のダイスをタップして目を選ぶ（長押しで、誰がいくらもらえるか）</span>${T.nx && T.nx.anyFace ? `<button class="wdbtn sm" id="wdAny">好きな目を選ぶ</button>` : ""}</div>`;
   if (T.p !== me) return `<div class="wdbar wait"><span>${T.ph === "pick" ? `${esc(wdNm(T.pickBy))}が目を選んでいます` : `${esc(wdNm(T.p))}の手番`}</span></div>`;
   if (T.ph === "roll") return `<div class="wdbar"><button class="wdbtn main" id="wdRoll">ダイスを振る${T.n !== 2 ? `（${T.n}個）` : ""}</button></div>`;
   if (T.ph === "act"){ const left = st.ch[me].some(c => wdCanAct(st, c.id)); return `<div class="wdbar"><button class="wdbtn ${left ? "ghost" : "main"}" id="wdNext">${left ? "残りの行動をとばして " : ""}手順4へ（秘宝）</button></div>`; }
-  if (T.ph === "tre"){ const any = st.treL.some(id => wdCanTre(st, me, id).ok); return `<div class="wdbar">${any ? `<span class="lbl">光っている秘宝をタップで獲得</span>` : ""}<button class="wdbtn main" id="wdEnd">ターン終了</button></div>`; }
+  if (T.ph === "tre"){ const any = st.treL.some(id => wdCanTre(st, me, id).ok); return `<div class="wdbar"><span class="lbl">${any ? "光っている秘宝をタップで獲得" : "いま獲得できる秘宝はありません"}</span><button class="wdbtn main" id="wdEnd">ターン終了</button></div>`; }
   return "";
 }
 function wdAskH(st){
@@ -2690,12 +2915,13 @@ function wdRender(g, D, live){
   const st = g.st, root = $("#wdg"); wdEnsureRoot(root);
   const main = root.querySelector("#wdMain");
   if (st.ph === "draft"){
+    wdDiceHide(false);
     main.innerHTML = `${wdTopH(st)}${wdGuideOn() ? `<div class="wdguide"><i>GUIDE</i><p>${wdGuide(st, g)}</p></div>` : ""}<div class="wdscroll">${wdDraftHtml(st)}</div>`;
     return;
   }
   const v = wdViewer(st), opp = wdOthers(st, v), [nl, nt] = WD_LAY[opp.length] || [1, 2, 1];
   const L = opp.slice(0, nl), Tp = opp.slice(nl, nl + nt), R = opp.slice(nl + nt);
-  const guide = !wdGuideOn() ? "" : live ? `<div class="wdguide"><i>GUIDE</i><p>${wdGuide(st, g)}</p></div>` : `<div class="wdguide play"><i>PLAY</i><p>ほかの人の動きを順番に再生しています。下の「スキップ」で飛ばせます。キャラは長押しで効果を確認できます。</p></div>`;
+  const guide = !wdGuideOn() ? "" : live ? `<div class="wdguide"><i>GUIDE</i><p>${wdGuide(st, g)}</p></div>` : `<div class="wdguide play"><i>PLAY</i><p>ひとつずつ順番に再生しています。下の「スキップ」で飛ばせます。キャラは長押しで効果を確認できます。</p></div>`;
   main.innerHTML = `${wdTopH(st, D)}${guide}
     <div class="wdtable l${L.length} r${R.length}">
       ${Tp.length ? `<div class="wdtop2 n${Tp.length}">${Tp.map(p => wdPodH(D, p, "top")).join("")}</div>` : ""}
@@ -2705,6 +2931,8 @@ function wdRender(g, D, live){
   if (live && st.ask && st.ask.pid === me){
     st.ask.opts.forEach(o => { const v2 = String(o.v); if (!v2) return; main.querySelectorAll(`[data-ch="${v2}"],[data-slot="${v2}"],[data-seat="${v2}"]`).forEach(el => el.classList.add("wdpick")); });
   }
+  const f = document.getElementById("wdFoc"); if (f && f._cid){ const s = wdChEl(f._cid); if (s) s.classList.add("wdfocsrc"); }
+  if (live) wdDiceSync(st);
 }
 function wdTopH(st, D){
   const r = D ? D.round : st.round;
@@ -2712,8 +2940,113 @@ function wdTopH(st, D){
 }
 function wdEnsureRoot(root){
   if (root.querySelector("#wdMain")) return;
-  root.innerHTML = `<div class="wdbg" aria-hidden="true"></div><div id="wdMain" class="wdmain"></div><div id="wdFxL" class="wdfxl" aria-hidden="true"></div>`;
+  root.innerHTML = `<div class="wdbg" aria-hidden="true"></div><div id="wdMain" class="wdmain"></div><div id="wdDiceL" class="wddl" hidden></div><div id="wdFxL" class="wdfxl" aria-hidden="true"></div>`;
   wdInput(root);
+}
+
+/* ---------- 属性ダイス：振るときだけ画面の上に出てくる ---------- */
+function wdDiceHtml(dice, mode, st){
+  const pick = mode === "pick";
+  return dice.map((a, i) => {
+    const n = pick ? wdPayFor(st, me, a) : 0, acts = pick && st.T.p === me ? st.ch[me].filter(c => !c.seal && c.s.includes(a)).length : 0;
+    return `<button class="wdbd ${pick ? "pick" : ""}" data-di="${a}" style="--ac:${WD_COL[a]};--i:${i}">${wdD20(a)}<b>${a}</b>${pick ? `<small>${n ? `+${n}wp` : "wpなし"}${acts ? `・${acts}体行動` : ""}</small>` : ""}</button>`;
+  }).join("");
+}
+function wdDiceShow(dice, mode, st, title){
+  const L = document.getElementById("wdDiceL"); if (!L) return null;
+  L.getAnimations().forEach(a => a.cancel());
+  L.innerHTML = `<div class="sc"></div><div class="box"><div class="hd">${title || ""}</div><div class="dd">${wdDiceHtml(dice, mode, st)}</div></div>`;
+  L.dataset.mode = mode; L.dataset.key = ""; L.hidden = false;
+  return L;
+}
+function wdDiceHide(fade){
+  const L = document.getElementById("wdDiceL"); if (!L || L.hidden) return;
+  const off = () => { L.hidden = true; L.innerHTML = ""; L.dataset.key = ""; };
+  if (!fade || wdSkipAll) return off();
+  L.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 320 / wdSpd() }).finished.then(off, off);
+}
+function wdDiceSync(st){
+  const T = st.T;
+  if (T && T.ph === "pick" && !st.ask && T.dice && T.dice.length){
+    const mine = T.pickBy === me, key = `${st.no}:${T.dice.join("")}:${mine ? 1 : 0}:${st.wp[me] || 0}`;
+    const L0 = document.getElementById("wdDiceL");
+    if (L0 && !L0.hidden && L0.dataset.key === key) return;
+    const L = wdDiceShow(T.dice, mine ? "pick" : "wait", st, mine ? `目を1つ選ぶ${T.pickBy !== T.p ? `（${esc(wdNm(T.p))}の手番）` : ""}` : `${wdPN(T.pickBy)}が目を選んでいます`);
+    if (L) L.dataset.key = key;
+  } else wdDiceHide(false);
+}
+/* 目が決まった瞬間：ダイスが弾けて、画面がその属性に染まる */
+function wdBurst(el, col){
+  const r = wdR2(el); if (!r || wdSkipAll) return null;
+  const c = wdC(r), L = wdLayer(), sp = wdSpd();
+  const b = document.createElement("div"); b.className = "wdburst"; b.style.cssText = `left:${c.x}px;top:${c.y}px;--ac:${col}`;
+  b.innerHTML = `<i class="ring"></i><i class="ring"></i>` + Array.from({ length: 18 }, () => `<i class="pt"></i>`).join("");
+  const fl = document.createElement("div"); fl.className = "wdflash"; fl.style.setProperty("--ac", col);
+  L.appendChild(fl); L.appendChild(b);
+  b.querySelectorAll(".pt").forEach((p, i) => { const ang = i * 20 + (i % 2) * 7, d = 90 + (i % 4) * 34; p.animate([{ transform: `rotate(${ang}deg) translateX(8px) scale(1.2)`, opacity: 1 }, { transform: `rotate(${ang}deg) translateX(${d}px) scale(.2)`, opacity: 0 }], { duration: 820 / sp, easing: "cubic-bezier(.1,.75,.3,1)", fill: "both" }); });
+  b.querySelectorAll(".ring").forEach((rg, i) => rg.animate([{ transform: "translate(-50%,-50%) scale(.2)", opacity: 1 }, { transform: `translate(-50%,-50%) scale(${i ? 7 : 3.6})`, opacity: 0 }], { duration: (700 + i * 320) / sp, easing: "ease-out", fill: "both" }));
+  fl.animate([{ opacity: 0 }, { opacity: .9, offset: .14 }, { opacity: 0 }], { duration: 1000 / sp, fill: "both" });
+  setTimeout(() => { b.remove(); fl.remove(); }, 1400 / sp);
+  return c;
+}
+/* 一時的な目印（コインの出発点など） */
+function wdAnchor(x, y){ const a = document.createElement("i"); a.className = "wdanc"; a.style.cssText = `left:${x - 10}px;top:${y - 10}px`; wdLayer().appendChild(a); return a; }
+
+/* ---------- キャラにフォーカス：行動するキャラが前に出てきて、効果を見せる ---------- */
+function wdFocCardH(c, k, hl){
+  const d = WD_CH[k];
+  if (!c) return `<span class="ar">${wdCharArt(k)}</span><b class="n">${d.n}</b>`;
+  return `<span class="ar">${wdArtC(c)}</span><span class="lv">Lv${c.lv}</span><b class="n">${d.n}</b><span class="sl">${c.s.map((a, i) => `<i data-fs="${i}" class="${i === 0 ? "m" : ""} ${a ? "on" : ""} ${hl && a === hl ? "act" : ""}" style="--sc:${WD_COL[a || "無"]}">${a ? wdIco(a) : ""}</i>`).join("")}</span>`;
+}
+const wdFocCard = () => document.querySelector("#wdFoc .fcard");
+const wdFocSlot = i => document.querySelector(`#wdFoc .fcard [data-fs="${i}"]`);
+function wdFocus(o){
+  const cur = document.getElementById("wdFoc");
+  if (cur && o.cid && cur._cid === o.cid && !wdSkipAll){
+    // 同じキャラが続けて動くときは、前に出たまま次の効果へ
+    cur._hl = o.hl; const fc = cur.querySelector(".fc"); fc.style.setProperty("--ac", o.ac || "#aaa");
+    const cap = cur.querySelector(".wdcap2"); cap.innerHTML = o.cap || "";
+    if (o.c){ const card = cur.querySelector(".fcard"); card.innerHTML = wdFocCardH(o.c, o.c.k, o.hl); }
+    cap.animate([{ opacity: 0, transform: "translateX(14px)" }, { opacity: 1, transform: "none" }], { duration: 380 / wdSpd(), fill: "both" });
+    wdFocDye(); return;
+  }
+  wdFocusEnd(true);
+  if (wdSkipAll) return;
+  const L = wdLayer(); if (!L) return;
+  const f = document.createElement("div"); f.id = "wdFoc"; f.className = "wdfoc";
+  f.innerHTML = `<div class="dim"></div><div class="fc" style="--ac:${o.ac || "#aaa"}"><div class="fcard" style="--cc:${o.c ? wdCAc(o.c) : WD_COL[WD_CH[o.ck].sig]}">${wdFocCardH(o.c, o.ck, o.hl)}</div><div id="wdCap" class="wdcap2">${o.cap || ""}</div></div>`;
+  f._cid = o.cid; f._hl = o.hl; L.appendChild(f);
+  const src = o.cid ? wdChEl(o.cid) : null, card = f.querySelector(".fcard"), r0 = wdR2(src), r1 = wdR2(card), sp = wdSpd();
+  if (src) src.classList.add("wdfocsrc");
+  f.querySelector(".dim").animate([{ opacity: 0 }, { opacity: 1 }], { duration: 320 / sp, fill: "both" });
+  if (r0 && r1) card.animate([{ transform: `translate(${r0.left - r1.left}px,${r0.top - r1.top}px) scale(${r0.width / r1.width},${r0.height / r1.height})`, opacity: .8 }, { transform: "none", opacity: 1 }], { duration: 520 / sp, easing: "cubic-bezier(.2,.85,.3,1.1)", fill: "both" });
+  else card.animate([{ transform: "scale(.6)", opacity: 0 }, { transform: "none", opacity: 1 }], { duration: 380 / sp, fill: "both" });
+  f.querySelector(".wdcap2").animate([{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "none" }], { duration: 380 / sp, delay: 300 / sp, fill: "both" });
+}
+function wdFocRefresh(D){
+  const f = document.getElementById("wdFoc"); if (!f || !f._cid) return;
+  const c = wdDC(D, f._cid); if (!c) return;
+  const card = f.querySelector(".fcard"); card.innerHTML = wdFocCardH(c, c.k, f._hl); card.style.setProperty("--cc", wdCAc(c));
+}
+function wdFocDye(){ const c = wdFocCard(); if (!c || wdSkipAll) return; c.classList.remove("dye"); void c.offsetWidth; c.classList.add("dye"); }
+function wdFocusEnd(now){
+  wdCapCtx = null;
+  const f = document.getElementById("wdFoc"); if (!f) return;
+  f.id = ""; const cid = f._cid;
+  document.querySelectorAll(".wdfocsrc").forEach(x => x.classList.remove("wdfocsrc"));
+  if (now || wdSkipAll){ f.remove(); return; }
+  const sp = wdSpd(), card = f.querySelector(".fcard"), src = cid ? wdChEl(cid) : null, r0 = wdR2(src), r1 = wdR2(card);
+  const an = [f.querySelector(".dim").animate([{ opacity: 1 }, { opacity: 0 }], { duration: 320 / sp, fill: "both" }), f.querySelector(".wdcap2").animate([{ opacity: 1 }, { opacity: 0 }], { duration: 220 / sp, fill: "both" })];
+  an.push(r0 && r1 ? card.animate([{ transform: "none", opacity: 1 }, { transform: `translate(${r0.left - r1.left}px,${r0.top - r1.top}px) scale(${r0.width / r1.width},${r0.height / r1.height})`, opacity: .5 }], { duration: 420 / sp, easing: "cubic-bezier(.5,0,.6,.5)", fill: "both" }) : card.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 260 / sp, fill: "both" }));
+  Promise.all(an.map(a => a.finished)).then(() => f.remove(), () => f.remove());
+}
+/* 手元に来たキャラは色を失う */
+function wdColorLoss(el, k){
+  const r = wdR2(el); if (!r || wdSkipAll) return;
+  const o = document.createElement("div"); o.className = "wdcl"; o.innerHTML = wdCharArt(k);
+  Object.assign(o.style, { left: r.left + "px", top: r.top + "px", width: r.width + "px", height: r.height + "px" });
+  wdLayer().appendChild(o);
+  o.animate([{ opacity: 1, filter: "saturate(1.4) brightness(1.1)" }, { opacity: 1, offset: .35 }, { opacity: 0, filter: "saturate(0) brightness(.8)" }], { duration: 1500 / wdSpd(), easing: "ease-in", fill: "both" }).finished.then(() => o.remove(), () => o.remove());
 }
 
 /* ======================= 進行：新しい出来事があれば再生してから操作できるようにする ======================= */
@@ -2728,10 +3061,12 @@ function drawWd(){
   wdSeenFx[g.id] = st.fxn || 0;
   if (st.ph !== "draft" && nw.length && fx.length && fx[0].n <= seen + 1 && !wdSkipAll){
     const D = wdDisp(st); for (let i = nw.length - 1; i >= 0; i--) wdUndo(D, nw[i]);
+    const th0 = wdThemeOf(st, seen); wdSetTheme(th0.a, th0.b);
     wdRunPlay(g, D, nw);
     return;
   }
   wdSkipAll = false;
+  const th = wdThemeOf(st); wdSetTheme(th.a, th.b);
   wdRender(g, wdDisp(st), true);
   if (g.status === "finished") wdEndShow(g);
 }
@@ -2743,12 +3078,12 @@ async function wdRunPlay(g, D, nw){
     if (!wdId) break;
     try { await wdStep(s); } catch (e) { console.error(e); s.fx.forEach(f => wdFwd(D, f)); }
   }
-  wdCapHide(true);
+  wdFocusEnd(true);
   wdPlay = null; wdAnimUntil = 0; wdSkipAll = false;
   drawWd();
 }
 const wdWait = ms => new Promise(r => { if (wdSkipAll || ms <= 0) return r(); const t = setTimeout(r, ms / wdSpd()); wdWaitR = () => { clearTimeout(t); r(); }; });
-function wdSkip(){ wdSkipAll = true; if (wdWaitR) wdWaitR(); document.querySelectorAll("#wdFxL > *").forEach(x => x.remove()); }
+function wdSkip(){ wdSkipAll = true; if (wdWaitR) wdWaitR(); document.querySelectorAll("#wdFxL > *").forEach(x => x.remove()); wdDiceHide(false); }
 /* 出来事を「見せる単位」にまとめる */
 function wdSteps(nw){
   const out = [];
@@ -2812,21 +3147,15 @@ function wdBanner(html, cls = "", dur = 1000){
   Object.assign(f.style, { left: r.left + "px", top: (r.top + r.height / 2) + "px", width: r.width + "px" });
   f.animate([{ opacity: 0, transform: "translateY(-50%) scaleX(.3)" }, { opacity: 1, transform: "translateY(-50%) scaleX(1)", offset: .18 }, { opacity: 1, transform: "translateY(-50%) scaleX(1)", offset: .8 }, { opacity: 0, transform: "translateY(-50%) scaleX(1.05)" }], { duration: dur / wdSpd(), easing: "ease-out", fill: "both" }).finished.then(() => f.remove(), () => f.remove());
 }
-/* 効果の説明カード（卓の中央に出し続ける） */
-function wdCapShow(html, ac){
-  let c = document.getElementById("wdCap");
-  if (!c){ c = document.createElement("div"); c.id = "wdCap"; c.className = "wdcap"; wdLayer().appendChild(c); }
-  const r = wdR2(wdFelt()); if (r) Object.assign(c.style, { left: (r.left + 6) + "px", width: (r.width - 12) + "px", top: (r.top + r.height * .5) + "px" });
-  c.style.setProperty("--ac", ac || "#fff"); c.innerHTML = html; c.classList.remove("on"); void c.offsetWidth; c.classList.add("on");
-}
+/* 効果の説明は、フォーカスしたキャラの横に出す（wdFocus） */
 function wdCapAdd(html){ const c = document.getElementById("wdCap"); if (c) c.insertAdjacentHTML("beforeend", html); }
-function wdCapHide(now){ wdCapCtx = null; const c = document.getElementById("wdCap"); if (!c) return; if (now) c.remove(); else { c.classList.remove("on"); setTimeout(() => { if (!c.classList.contains("on")) c.remove(); }, 300); } }
+const wdCapHide = now => wdFocusEnd(now);
 const wdPN = p => `<b class="pn" style="--pc:${pcolor(p)}">${esc(wdNm(p))}</b>`;
 function wdPlayTx(t){ const el = document.getElementById("wdPlayTx"); if (el) el.innerHTML = "▶ " + t; }
 
 /* 20面ダイスが転がる */
 function wdRollAnim(final){
-  const ds = [...document.querySelectorAll("#wdMain #wdDice .wddie")]; if (!ds.length || wdSkipAll) return Promise.resolve();
+  const ds = [...document.querySelectorAll("#wdDiceL .wdbd")]; if (!ds.length || wdSkipAll) return Promise.resolve();
   const sp = wdSpd(), dur = 1500 / sp;
   return Promise.all(ds.map((d, i) => new Promise(res => {
     const svg = d.querySelector("svg"), lab = d.querySelector("b"), fa = final[i];
@@ -2848,8 +3177,9 @@ function wdRollAnim(final){
 }
 /* ダイスを卓の中央で転がす（効果・wp獲得）。items: [{a, res, pre}] */
 function wdRollMany(items){
-  const r = wdR2(wdFelt()); if (!r || wdSkipAll || !items.length) return Promise.resolve();
-  const sp = wdSpd(), dur = 1300 / sp;
+  if (wdSkipAll || !items.length) return Promise.resolve();
+  const fc = wdR2(document.querySelector("#wdFoc .fc")), r = fc ? { left: 0, top: fc.bottom + 4, width: innerWidth, height: 190 } : { left: 0, top: innerHeight * .3, width: innerWidth, height: 220 };
+  const sp = wdSpd(), dur = 1500 / sp;
   const box = document.createElement("div"); box.className = "wdroll1";
   Object.assign(box.style, { left: r.left + "px", top: r.top + "px", width: r.width + "px", height: r.height + "px" });
   box.innerHTML = `<div class="in">${items.map(it => `<div class="one">${it.pre || ""}<span class="wddie ${items.length > 1 ? "mid2" : "big"}">${wdD20(WD_AT[0])}<b></b></span><div class="res"></div></div>`).join("")}</div>`;
@@ -2905,70 +3235,88 @@ function wdCapMarkIdx(idx){ const c = document.getElementById("wdCap"); if (!c) 
 function wdCapMark(re){ const c = document.getElementById("wdCap"); if (!c) return; const idx = [...c.querySelectorAll(".tx [data-cl]")].filter(sp => re.test(sp.textContent)).map(sp => +sp.dataset.cl); if (idx.length) wdCapMarkIdx(idx.slice(0, 1)); }
 const WD_CURSE_RE = { "ダイス1つ": /ダイスは1つ/, "目を選ばれる": /あなたが選ぶ/, "秘宝禁止": /獲得できない/, "秘宝+1000wp": /\+1000/, "龍・覇・幻 禁止": /使えない/, "手順3は1体だけ": /1体だけ/, "手順1のwp半分": /半分/ };
 /* ---------- 1ステップの演出 ---------- */
+const wdHd = (p, name, tag, cls = "", sc) => `<div class="hd"><small>${wdPN(p)}</small><b>${name}</b>${tag ? `<em class="${cls}"${sc ? ` style="--sc:${sc}"` : ""}>${tag}</em>` : ""}</div>`;
 async function wdStep(s){
   const P = wdPlay, D = P.D, g = P.g, e = s.e;
-  const apply = (list = s.fx) => { list.forEach(f => wdFwd(D, f)); wdRender(g, D, false); };
-  const quick = e.p === me && ["grant", "lvup", "buy", "earn", "release", "tre"].includes(s.k) ? .7 : 1;
-  const W = ms => wdWait(ms * quick);
+  const apply = (list = s.fx) => { list.forEach(f => wdFwd(D, f)); wdRender(g, D, false); wdFocRefresh(D); };
+  const quick = e.p === me && ["grant", "lvup", "buy", "earn", "release", "tre", "skip"].includes(s.k) ? .75 : 1;
+  const W = ms => wdWait(ms * quick * 1.2);
   if (wdSkipAll){ apply(); return; }
   const cn = cid => { const c = wdDC(D, cid); return c ? wdDef(c).n : ""; };
+  const src = fb => wdFocCard() || fb || wdFelt();
   switch (s.k){
     case "turn": {
-      wdCapHide();
+      wdFocusEnd(); wdDiceHide(true);
       apply();
       wdPlayTx(`${wdPN(e.p)}の手番`);
-      wdHl(wdSeatEl(e.p), "wdspot", 1300);
-      wdBanner(`<span style="--pc:${pcolor(e.p)}">${esc(wdNm(e.p))}</span><small>の手番</small>`, "turn", 1100);
-      await W(1000);
-      if (s.fx[1]){ wdBanner(`キューブがないので<small>手順1（ダイス）はとばし</small>`, "sub", 900); await W(800); }
+      wdHl(wdSeatEl(e.p), "wdspot", 1500);
+      wdBanner(`<span style="--pc:${pcolor(e.p)}">${esc(wdNm(e.p))}</span><small>の手番</small>`, "turn", 1300);
+      await W(1250);
+      if (s.fx[1]){ wdBanner(`キューブがないので<small>手順1（ダイス）はとばし</small>`, "sub", 1100); await W(1000); }
       return;
     }
-    case "round": { wdCapHide(); apply(); wdBanner(`ROUND <b>${e.v}</b>`, "round", 1100); await W(1000); return; }
+    case "round": { wdFocusEnd(); apply(); wdBanner(`ROUND <b>${e.v}</b>`, "round", 1300); await W(1200); return; }
     case "roll": {
-      apply(); wdPlayTx(`${wdPN(e.p)}がダイスを振った`);
+      wdFocusEnd(); apply(); wdPlayTx(`${wdPN(e.p)}がダイスを振った`);
+      wdDiceShow(e.dice, "roll", null, `${wdPN(e.p)}がダイスを振る`);
       await wdRollAnim(e.dice);
-      await W(250); return;
+      const L = document.getElementById("wdDiceL"), h = L && L.querySelector(".hd"); if (h) h.innerHTML = `${wdPN(e.p)}：${e.dice.map(a => `<span style="color:${WD_COL[a]}">${a}</span>`).join("・")}`;
+      await W(700); return;
     }
     case "face": {
-      const pays = s.fx.slice(1);
-      wdFwd(D, e); wdRender(g, D, false);
-      const die = wdQ(`.wddie.chosen`) || wdQ("#wdDice");
-      wdHl(die, "wdpopx", 700);
+      wdFocusEnd();
+      const pays = s.fx.slice(1), dice = D.T && D.T.dice && D.T.dice.length ? D.T.dice : [e.a];
+      let L = document.getElementById("wdDiceL");
+      if (!L || L.hidden || !L.querySelector(`.wdbd[data-di="${e.a}"]`)) L = wdDiceShow(dice.includes(e.a) ? dice : [...dice, e.a], "view", null, "");
+      const hd = L && L.querySelector(".hd"); if (hd) hd.innerHTML = `${e.by && e.by !== e.p ? `${wdPN(e.by)}が選んだ` : `${wdPN(e.p)}が選んだ`}：「${e.a}」`;
+      const dd = L ? [...L.querySelectorAll(".wdbd")] : [], ch = dd.find(x => x.dataset.di === e.a) || dd[0];
+      dd.forEach(x => { x.classList.remove("pick"); x.classList.toggle("off", x !== ch); }); if (ch) ch.classList.add("chosen");
       wdPlayTx(`「${e.a}」を選んだ${e.by && e.by !== e.p ? `（${wdPN(e.by)}が選択）` : ""}`);
-      wdBanner(`${wdIco(e.a)}<b>${e.a}</b><small>${e.by && e.by !== e.p ? `${esc(wdNm(e.by))}が選んだ` : "を選んだ"}</small>`, "face", 900);
-      await W(750);
+      await W(800);
+      const pt = ch ? wdBurst(ch, WD_COL[e.a]) : null;
+      wdSetTheme(e.a);
+      wdDiceHide(true);
+      wdFwd(D, e); wdRender(g, D, false);
+      wdBanner(`${wdIco(e.a)}<b>${e.a}</b><small>${e.a}の力が場を満たす</small>`, "face", 1300);
+      await W(1100);
       if (pays.length){
-        wdPlayTx(`「${e.a}」のキューブを持つ人に wp`);
-        await Promise.all(pays.map(f => wdCoins(die, wdWpEl(f.p), f.v)));
-        apply(pays); pays.forEach(f => { wdFloat(wdWpEl(f.p), `+${f.v}`, "plus"); wdHl(wdWpEl(f.p), "wdbump", 600); });
-        await W(550);
+        wdPlayTx(`「${e.a}」のキューブを持つ人に wp（キューブ1つ${WD_PAY(e.a)}wp・メインは2倍）`);
+        const an = pt ? wdAnchor(pt.x, pt.y) : wdFelt();
+        await Promise.all(pays.map(f => wdCoins(an, wdWpEl(f.p), f.v)));
+        if (pt) an.remove();
+        apply(pays); pays.forEach(f => { wdFloat(wdWpEl(f.p), `+${f.v}`, "plus"); wdHl(wdWpEl(f.p), "wdbump", 700); });
+        await W(800);
       }
       return;
     }
     case "noroll": apply(); return;
     case "eff": {
-      const ch = wdChEl(e.cid), d = WD_CH[e.ck], tx = d.e[e.a].tx;
+      const d = WD_CH[e.ck], tx = d.e[e.a].tx, c = wdDC(D, e.cid);
+      wdFocus({ cid: e.cid, c, ck: e.ck, ac: WD_COL[e.a] || "#8A8FA3", hl: e.a,
+        cap: wdHd(e.p, d.n, e.a === "無" ? "無の効果" : `${wdIco(e.a)}${e.a}の効果`, "", WD_COL[e.a] || "#8A8FA3") + `<p class="tx">${wdClauses(tx).map((cl, i) => `<span class="cl" data-cl="${i}">${esc(cl)}</span>`).join("")}</p>${e.copy ? `<p class="sub">（ほかのキャラの効果をコピー）</p>` : ""}` });
       wdCapCtx = { tx, lv: e.lv || 1, p: e.p };
-      wdHl(ch, "wdhl", 1200);
-      wdCapShow(`<div class="ch">${wdEmb(e.ck)}<div><small>${wdPN(e.p)}${e.copy ? "・コピー" : ""}</small><b>${d.n}<em style="--sc:${WD_COL[e.a] || "#aaa"}">${e.a === "無" ? "無" : wdIco(e.a) + e.a}</em></b></div></div><p class="tx">${wdClauses(tx).map((c, i) => `<span class="cl" data-cl="${i}">${esc(c)}</span>`).join("")}</p>`, WD_COL[e.a] || "#aaa");
       wdPlayTx(`${wdPN(e.p)}の${d.n}「${e.a}」`);
-      await W(800);
+      await W(1300);
       const gs = s.fx.slice(1);
       if (gs.length){
         const tot = gs.reduce((n, f) => n + f.v, 0);
-        await wdCoins(ch || wdSeatEl(e.p), wdWpEl(e.p), tot);
         const ex = wdExplain(tx, e.lv || 1, tot); wdCapMarkIdx(ex.hi);
-        apply(gs); wdFloat(wdWpEl(e.p), `+${tot}`, "plus"); wdHl(wdWpEl(e.p), "wdbump", 600); wdCapAdd(`<div class="res">${ex.note ? `<span class="calc">${esc(ex.note)}</span>` : ""}<b>+${tot}wp</b></div>`);
-        await W(550);
-      } else await W(250);
+        await W(450);
+        await wdCoins(src(wdChEl(e.cid)), wdWpEl(e.p), tot);
+        apply(gs); wdFloat(wdWpEl(e.p), `+${tot}`, "plus"); wdHl(wdWpEl(e.p), "wdbump", 700); wdCapAdd(`<div class="res">${ex.note ? `<span class="calc">${esc(ex.note)}</span>` : ""}<b>+${tot}wp</b></div>`);
+        await W(900);
+      } else await W(500);
       return;
     }
     case "lvpay": {
-      wdPlayTx(`動いたキャラのキャラLvのwp`);
+      wdFocusEnd(); await W(350);
+      wdPlayTx(`動いたキャラが、キャラLvのwpをもらう`);
+      wdBanner(`キャラLvのwp<small>動いたキャラ1体につき1回</small>`, "sub", 1000);
+      await W(500);
       await Promise.all(s.fx.map(f => wdCoins(wdChEl(f.cid) || wdSeatEl(f.p), wdWpEl(f.p), f.v, "lv")));
       apply(); const tot = {}; s.fx.forEach(f => { tot[f.p] = (tot[f.p] || 0) + f.v; });
-      Object.keys(tot).forEach(p => { wdFloat(wdWpEl(p), `+${tot[p]}`, "plus"); wdHl(wdWpEl(p), "wdbump", 600); });
-      await W(600); return;
+      Object.keys(tot).forEach(p => { wdFloat(wdWpEl(p), `+${tot[p]}`, "plus"); wdHl(wdWpEl(p), "wdbump", 700); });
+      await W(900); return;
     }
     case "gain": {
       wdPlayTx(`${wdPN(e.p)} +${e.v}wp ${esc(e.why || "")}`);
@@ -2976,104 +3324,147 @@ async function wdStep(s){
         const ex = wdExplain(wdCapCtx.tx, wdCapCtx.lv, e.v); wdCapMarkIdx(ex.hi);
         wdCapAdd(`<div class="res">${ex.note ? `<span class="calc">${esc(ex.note)}</span>` : ""}<b>+${e.v}wp</b></div>`);
       }
-      if (/予言/.test(e.why || "")) wdBanner(`<span style="--pc:${pcolor(e.p)}">${esc(wdNm(e.p))}</span><small>予言的中！ +${e.v}wp</small>`, "tre", 1100);
+      if (/予言/.test(e.why || "")) wdBanner(`<span style="--pc:${pcolor(e.p)}">${esc(wdNm(e.p))}</span><small>予言的中！ +${e.v}wp</small>`, "tre", 1300);
+      if (e.tre) wdBanner(`<span style="--pc:${pcolor(e.p)}">${esc(wdNm(e.p))}</span><small>${esc(e.why || "")} +${e.v}wp</small>`, "tre", 1300);
       if (/セラフィム|ヒュドラ/.test(e.why || "")) wdCapMark(/秘宝|炎の効果/);
-      await wdCoins(wdFelt(), wdWpEl(e.p), e.v);
-      apply(); wdFloat(wdWpEl(e.p), `+${e.v}`, "plus"); wdHl(wdWpEl(e.p), "wdbump", 600);
-      await W(450); return;
+      await wdCoins(src(), wdWpEl(e.p), e.v);
+      apply(); wdFloat(wdWpEl(e.p), `+${e.v}`, "plus"); wdHl(wdWpEl(e.p), "wdbump", 700);
+      await W(700); return;
     }
     case "steal": {
       wdPlayTx(`${wdPN(e.p)}が${wdPN(e.q)}から${e.v}wp奪った`);
-      wdHl(wdSeatEl(e.q), "wdhurt", 900); wdFloat(wdWpEl(e.q), `−${e.v}`, "minus");
+      wdHl(wdSeatEl(e.q), "wdhurt", 1100); wdFloat(wdWpEl(e.q), `−${e.v}`, "minus");
       wdCapMark(/奪|反撃/); wdCapAdd(`<div class="res rob">${esc(wdNm(e.q))}から ${e.v}wp 奪取</div>`);
+      await W(350);
       await wdCoins(wdWpEl(e.q), wdWpEl(e.p), e.v, "red");
-      apply(); wdFloat(wdWpEl(e.p), `+${e.v}`, "rob"); wdHl(wdWpEl(e.p), "wdbump", 600);
-      await W(500); return;
+      apply(); wdFloat(wdWpEl(e.p), `+${e.v}`, "rob"); wdHl(wdWpEl(e.p), "wdbump", 700);
+      await W(800); return;
     }
     case "block": {
       wdPlayTx(`${wdPN(e.q)}が干渉無効で防いだ`);
-      wdOver(wdSeatEl(e.q), `<span class="shd"></span><b>防いだ！</b>`, "block", 1100);
+      await wdFly(src(wdSeatEl(e.p)), wdSeatEl(e.q), `<span class="wdhex"></span>`, { dur: 600, s0: .5, sm: 1.3, s1: 1 });
+      wdOver(wdSeatEl(e.q), `<span class="shd"></span><b>防いだ！</b>`, "block", 1300);
       wdCapMark(/奪|封|戻|下げ|ダイス|選ぶ|使えない|1体|秘宝/); wdCapAdd(`<div class="res">${esc(wdNm(e.q))}は干渉無効で防いだ</div>`);
       if (e.v){ await wdCoins(wdWpEl(e.p), wdWpEl(e.q), e.v); apply(); wdFloat(wdWpEl(e.q), `+${e.v}`, "plus"); } else apply();
-      await W(800); return;
+      await W(1000); return;
     }
     case "seal": {
       wdPlayTx(`${wdPN(e.q)}の${cn(e.cid)}に行動封じ`);
-      const t = wdChEl(e.cid);
-      await wdFly(wdSeatEl(e.p), t, `<b class="wdstamp">封</b>`, { dur: 600, s0: .6, sm: 1.8, s1: 1.1, arc: -60 });
-      apply(); wdHl(wdChEl(e.cid), "wdshake", 500); wdOver(wdChEl(e.cid), `<b class="stamp">封</b>`, "seal", 900);
+      const t = wdChEl(e.cid); wdHl(t, "wdpopx", 600);
+      await wdFly(src(wdSeatEl(e.p)), t, `<b class="wdstamp">封</b>`, { dur: 700, s0: .6, sm: 1.9, s1: 1.1, arc: -60 });
+      apply(); wdHl(wdChEl(e.cid), "wdshake", 600); wdOver(wdChEl(e.cid), `<b class="stamp">封</b>`, "seal", 1100);
       wdCapMark(/行動封じ|封じる/); wdCapAdd(`<div class="res rob">${esc(wdNm(e.q))}の${cn(e.cid)}を封じた</div>`);
-      await W(700); return;
+      await W(950); return;
     }
     case "rmcube": {
       wdPlayTx(`${wdPN(e.q)}の${cn(e.cid)}の${e.a}が無に戻った`);
-      const sl = wdQ(`[data-slot="${e.cid}:${e.s}"]`);
-      wdOver(sl, `<i class="shard"></i><i class="shard b"></i><i class="shard c"></i>`, "break", 800); wdHl(sl, "wdshake", 500); wdCapMark(/無に戻|外す|移す/); wdCapAdd(`<div class="res rob">${esc(wdNm(e.q))}の${e.a}キューブが外れた</div>`);
-      await W(450); apply(); await W(400); return;
+      const sl = wdQ(`[data-slot="${e.cid}:${e.s}"]`) || wdChEl(e.cid);
+      await wdFly(src(wdSeatEl(e.p)), sl, `<i class="wdcoin red"></i>`, { dur: 500, s1: 1.2 });
+      wdOver(sl, `<i class="shard"></i><i class="shard b"></i><i class="shard c"></i>`, "break", 900); wdHl(sl, "wdshake", 600); wdCapMark(/無に戻|外す|移す/); wdCapAdd(`<div class="res rob">${esc(wdNm(e.q))}の${e.a}キューブが外れた</div>`);
+      await W(550); apply(); await W(650); return;
     }
     case "grant": {
-      const c = wdDC(D, e.cid);
-      wdPlayTx(`${wdPN(e.p)}の${c ? wdDef(c).n : ""}に「${e.a}」${e.act ? `（${e.v}wp）` : ""}`);
-      if (e.act) wdCapHide();
-      if (e.v){ wdFloat(wdWpEl(e.p), `−${e.v}`, "minus"); }
-      const src = e.from2 ? wdFelt() : e.act ? wdWpEl(e.p) : wdFelt();
-      await wdFly(src, wdQ(`[data-slot="${e.cid}:${e.s}"]`) || wdChEl(e.cid), `<span class="wdcube big" style="--ac:${WD_COL[e.a]}">${wdIco(e.a)}</span>`, { dur: 620, s0: .6, sm: 1.6, s1: .9, arc: -50 });
-      apply(); wdHl(wdQ(`[data-slot="${e.cid}:${e.s}"]`), "wdpopx", 600);
-      await W(350); return;
-    }
-    case "lvup": case "lvdown": {
-      const up = s.k === "lvup", c = wdDC(D, e.cid);
-      wdPlayTx(`${wdPN(up ? e.p : e.q)}の${c ? wdDef(c).n : ""}が${up ? `Lv${(c ? c.lv : 0) + (e.up || 1)}に` : "Lvダウン"}${e.v ? `（${e.v}wp）` : ""}`);
-      if (e.act) wdCapHide();
+      const c = wdDC(D, e.cid), d = c ? wdDef(c) : null, sn = e.s === 0 ? "メイン枠" : `サブ${e.s}`, cube = `<span class="wdcube big" style="--ac:${WD_COL[e.a]}">${wdIco(e.a)}</span>`;
+      wdPlayTx(`${wdPN(e.p)}の${d ? d.n : ""}に「${e.a}」${e.act ? `（${e.v}wp）` : ""}`);
+      if (e.act && c){
+        wdFocus({ cid: e.cid, c, ck: c.k, ac: WD_COL[e.a], cap: wdHd(e.p, d.n, "属性付与", "act") + `<p class="big">${sn}に ${wdIco(e.a)}<span style="color:${WD_COL[e.a]}">「${e.a}」</span></p><p class="sub">${e.a}の目で：${esc(d.e[e.a].tx)}</p><div class="res minus"><span class="calc">付与コスト</span><b>−${e.v}wp</b></div>` });
+        await W(1100);
+        wdFloat(wdWpEl(e.p), `−${e.v}`, "minus");
+        await wdFly(wdWpEl(e.p), wdFocSlot(e.s) || wdFocCard(), cube, { dur: 750, s0: .6, sm: 1.8, s1: .9, arc: -60 });
+        apply(); wdFocDye(); wdHl(wdQ(`[data-slot="${e.cid}:${e.s}"]`), "wdpopx", 700);
+        wdPlayTx(`${d.n}が「${e.a}」の色に染まった`);
+        await W(1300); wdFocusEnd(); await W(500); return;
+      }
       if (e.v) wdFloat(wdWpEl(e.p), `−${e.v}`, "minus");
-      apply(); const t = wdChEl(e.cid);
-      wdOver(t, `<b class="lvb ${up ? "" : "dn"}">${up ? "Lv UP" : "Lv DOWN"}</b>`, up ? "lvup" : "lvdn", 1000); wdHl(t, up ? "wdpop" : "wdshake", 600);
-      await W(850); return;
-    }
-    case "buy": {
-      wdCapHide(); const d = WD_CH[e.ck];
-      wdPlayTx(`${wdPN(e.p)}が${d.n}を獲得（${e.v}wp）`);
-      const from = wdQ(`[data-mk="${e.i}"]`);
-      wdFloat(wdWpEl(e.p), `−${e.v}`, "minus");
-      await wdFly(from, wdSeatEl(e.p), `<span class="wdflycard" style="--ac:${WD_COL[d.sig]}">${wdEmb(e.ck)}<b>${d.n}</b></span>`, { dur: 800, s0: 1, sm: 1.5, s1: .6, arc: -70 });
-      apply(); wdHl(wdChEl(e.cid), "wdpopx", 700);
-      await W(400); return;
-    }
-    case "release": {
-      wdCapHide(); const d = WD_CH[e.ck];
-      wdPlayTx(`${wdPN(e.p)}が${d.n}を手放した${e.free ? "（秘宝のため無料）" : `（${e.v}wp）`} → 場をシャッフル`);
-      if (e.v) wdFloat(wdWpEl(e.p), `−${e.v}`, "minus");
-      const from = wdChEl(e.cid);
-      const fl = wdFly(from, wdQ("#wdDeck"), `<span class="wdflycard" style="--ac:${WD_COL[d.sig]}">${wdEmb(e.ck)}<b>${d.n}</b></span>`, { dur: 750, s1: .4, arc: -40 });
-      await W(150); apply(); await fl;
-      document.querySelectorAll("#wdMain .wdmkc").forEach((m, i) => { m.style.setProperty("--i", i); m.classList.add("deal"); });
+      await wdFly(src(), wdQ(`[data-slot="${e.cid}:${e.s}"]`) || wdChEl(e.cid), cube, { dur: 700, s0: .6, sm: 1.6, s1: .9, arc: -50 });
+      apply(); wdHl(wdQ(`[data-slot="${e.cid}:${e.s}"]`), "wdpopx", 700);
       await W(600); return;
     }
+    case "lvup": case "lvdown": {
+      const up = s.k === "lvup", c = wdDC(D, e.cid), d = c ? wdDef(c) : null;
+      if (up && e.act && c){
+        const to = c.lv + (e.up || 1), w0 = wdLvWp(c), w1 = WD_LVT[d.t][to - 1];
+        wdFocus({ cid: e.cid, c, ck: c.k, ac: "#FFE7A3", cap: wdHd(e.p, d.n, "Lv上げ", "act") + `<p class="big">Lv${c.lv} <span class="ar">▶</span> <span style="color:#FFE7A3">Lv${to}</span></p><p class="sub">動いたときにもらえるwp：${w0} → <b>${w1}</b>（+${w1 - w0}）</p><div class="res minus"><span class="calc">Lv上げコスト</span><b>−${e.v}wp</b></div>` });
+        wdPlayTx(`${wdPN(e.p)}の${d.n}をLv${to}に（${e.v}wp）`);
+        await W(1100);
+        wdFloat(wdWpEl(e.p), `−${e.v}`, "minus");
+        await wdCoins(wdWpEl(e.p), wdFocCard(), e.v, "lv");
+        apply(); wdOver(wdFocCard(), `<b class="lvb">Lv UP</b>`, "lvup", 1300); wdFocDye();
+        await W(1300); wdFocusEnd(); await W(500); return;
+      }
+      wdPlayTx(`${wdPN(up ? e.p : e.q)}の${d ? d.n : ""}が${up ? `Lv${(c ? c.lv : 0) + (e.up || 1)}に` : "Lvダウン"}${e.v ? `（${e.v}wp）` : ""}`);
+      if (e.v) wdFloat(wdWpEl(e.p), `−${e.v}`, "minus");
+      if (!up) await wdFly(src(wdSeatEl(e.p)), wdChEl(e.cid), `<span class="wdhex"></span>`, { dur: 550, s1: 1 });
+      apply(); const t = wdChEl(e.cid);
+      wdOver(t, `<b class="lvb ${up ? "" : "dn"}">${up ? "Lv UP" : "Lv DOWN"}</b>`, up ? "lvup" : "lvdn", 1200); wdHl(t, up ? "wdpopx" : "wdshake", 700);
+      await W(1000); return;
+    }
+    case "buy": {
+      const d = WD_CH[e.ck], by = e.by ? wdDC(D, e.by) : null;
+      wdPlayTx(`${wdPN(e.p)}が${d.n}を獲得（${e.v}wp）`);
+      if (by) wdFocus({ cid: e.by, c: by, ck: by.k, ac: WD_COL[d.sig], cap: wdHd(e.p, wdDef(by).n, "キャラ獲得", "act") + `<div class="buyc">${wdEmb(e.ck)}<div><b>${d.n}</b><small>${d.th}・得意${d.sig}・${d.t}タイプ</small></div></div><div class="res minus"><span class="calc">獲得コスト</span><b>−${e.v}wp</b></div>` });
+      await W(by ? 1200 : 300);
+      const from = wdQ(`[data-mk="${e.i}"]`);
+      wdHl(from, "wdpopx", 700); wdFloat(wdWpEl(e.p), `−${e.v}`, "minus");
+      await W(400);
+      if (by) wdFocusEnd();
+      await wdFly(from, wdSeatEl(e.p), `<span class="wdflycard" style="--ac:${WD_COL[d.sig]}">${wdEmb(e.ck)}<b>${d.n}</b></span>`, { dur: 900, s0: 1, sm: 1.6, s1: .6, arc: -80 });
+      apply(); const nc = wdChEl(e.cid); wdHl(nc, "wdpopx", 800); wdColorLoss(nc, e.ck);
+      wdPlayTx(`${d.n}が${wdPN(e.p)}の手元へ（色を失い、無属性からスタート）`);
+      await W(1400); return;
+    }
+    case "skip": {
+      const c = wdDC(D, e.cid);
+      if (c){
+        wdFocus({ cid: e.cid, c, ck: c.k, ac: "#8A8FA3", cap: wdHd(e.p, wdDef(c).n, "この行動はしない", "none") + `<p class="sub">このキャラは今回の手番では、もう行動しません。</p>` });
+        wdPlayTx(`${wdPN(e.p)}の${wdDef(c).n}は行動しない`);
+        await W(1200); wdFocusEnd(); await W(400);
+      }
+      apply(); return;
+    }
+    case "release": {
+      const d = WD_CH[e.ck], c = wdDC(D, e.cid);
+      wdPlayTx(`${wdPN(e.p)}が${d.n}を手放した${e.free ? "（秘宝のため無料）" : `（${e.v}wp）`}`);
+      if (c) wdFocus({ cid: e.cid, c, ck: c.k, ac: "#E8455F", cap: wdHd(e.p, d.n, "手放す", "none") + `<p class="sub">${e.free ? "秘宝を手に入れるため、枠を空ける（無料）。" : "獲得コストと同じwpを払って手放す。"}付いていたキューブはなくなり、山札に戻る。</p>${e.v ? `<div class="res minus"><span class="calc">手放すコスト</span><b>−${e.v}wp</b></div>` : ""}` });
+      await W(1200);
+      if (e.v) wdFloat(wdWpEl(e.p), `−${e.v}`, "minus");
+      const fromEl = wdFocCard() || wdChEl(e.cid);
+      const fl = wdFly(fromEl, wdQ("#wdDeck"), `<span class="wdflycard" style="--ac:${WD_COL[d.sig]}">${wdEmb(e.ck)}<b>${d.n}</b></span>`, { dur: 850, s1: .4, arc: -40 });
+      wdFocusEnd(true);
+      await W(150); apply(); await fl;
+      wdPlayTx(`場のキャラと山札をシャッフルして、3体めくり直し`);
+      document.querySelectorAll("#wdMain .wdmkc").forEach((m, i) => { m.style.setProperty("--i", i); m.classList.add("deal"); });
+      await W(900); return;
+    }
     case "tre": {
-      wdCapHide(); const t = wdTreDef(e.id);
-      wdPlayTx(`${wdPN(e.p)}が秘宝「${t.n}」を獲得！`);
-      e.used.forEach(u => wdHl(wdQ(`[data-slot="${u.cid}:${u.i}"]`), "wdpopx", 700));
-      wdFloat(wdWpEl(e.p), `−${e.v}`, "minus");
+      wdFocusEnd(); const t = wdTreDef(e.id);
+      wdPlayTx(`${wdPN(e.p)}が秘宝「${t.n}」に挑む`);
       const gem = wdQ(`[data-tre="${e.id}"]`);
-      wdHl(gem, "wdpopx", 700);
-      await Promise.all(e.used.map(u => wdFly(wdQ(`[data-slot="${u.cid}:${u.i}"]`), gem, `<span class="wdcube big" style="--ac:${WD_COL[u.a]}">${wdIco(u.a)}</span>`, { dur: 520, s1: .5, arc: -30 })));
-      await wdFly(gem, wdSeatEl(e.p), `<span class="wdflygem r${t.r}">${wdTreArt(e.id)}</span>`, { dur: 900, s0: 1, sm: 2.4, s1: .8, arc: -90 });
+      wdHl(gem, "wdpopx", 900);
+      wdBanner(`<span style="--pc:${pcolor(e.p)}">${esc(wdNm(e.p))}</span><small>秘宝「${esc(t.n)}」${wdStarTx(t.r)}</small>`, "sub", 1100);
+      await W(900);
+      e.used.forEach(u => wdHl(wdQ(`[data-slot="${u.cid}:${u.i}"]`), "wdpopx", 800));
+      wdFloat(wdWpEl(e.p), `−${e.v}`, "minus");
+      await wdCoins(wdWpEl(e.p), gem, e.v);
+      await Promise.all(e.used.map(u => wdFly(wdQ(`[data-slot="${u.cid}:${u.i}"]`), gem, `<span class="wdcube big" style="--ac:${WD_COL[u.a]}">${wdIco(u.a)}</span>`, { dur: 650, s1: .5, arc: -30 })));
+      const pt = wdBurst(gem, t.r >= 4 ? "#FF9AE0" : "#FFE7A3");
+      await wdFly(gem, wdSeatEl(e.p), `<span class="wdflygem r${t.r}">${wdTreArt(e.id)}</span>`, { dur: 1000, s0: 1, sm: 2.6, s1: .8, arc: -100 });
       apply();
-      wdBanner(`<span style="--pc:${pcolor(e.p)}">${esc(wdNm(e.p))}</span><small>秘宝「${esc(t.n)}」${wdStarTx(t.r)} 獲得！ ★${D.tre[e.p].reduce((n, z) => n + wdTreDef(z.id).r, 0)}/${WD_WIN_STARS}</small>`, "tre", 1500);
-      wdHl(wdSeatEl(e.p), "wdspot", 1400);
-      await W(1300); return;
+      wdBanner(`<span style="--pc:${pcolor(e.p)}">${esc(wdNm(e.p))}</span><small>秘宝「${esc(t.n)}」${wdStarTx(t.r)} 獲得！ ★${D.tre[e.p].reduce((n, z) => n + wdTreDef(z.id).r, 0)}/${WD_WIN_STARS}</small>`, "tre", 1800);
+      wdHl(wdSeatEl(e.p), "wdspot", 1600); wdHl(wdQ(`[data-tre="${e.id}"]`), "wdpopx", 900);
+      await W(1700); return;
     }
     case "shield": {
       wdPlayTx(`${wdPN(e.p)}が干渉無効に（次の自分の手番まで）`);
-      apply(); wdOver(wdSeatEl(e.p), `<span class="shd"></span><b>干渉無効</b>`, "block", 900); wdCapMark(/干渉無効/);
-      await W(700); return;
+      apply(); wdOver(wdSeatEl(e.p), `<span class="shd"></span><b>干渉無効</b>`, "block", 1200); wdCapMark(/干渉無効/);
+      await W(1000); return;
     }
     case "curse": {
       wdPlayTx(`${wdPN(e.q)}に「${esc(e.why)}」`);
-      await wdFly(wdSeatEl(e.p), wdSeatEl(e.q), `<span class="wdhex"></span>`, { dur: 600, s0: .5, sm: 1.4, s1: 1.2 });
-      apply(); wdOver(wdSeatEl(e.q), `<b class="cur">${esc(e.why)}</b>`, "curse", 1100);
+      await wdFly(src(wdSeatEl(e.p)), wdSeatEl(e.q), `<span class="wdhex"></span>`, { dur: 700, s0: .5, sm: 1.4, s1: 1.2 });
+      apply(); wdOver(wdSeatEl(e.q), `<b class="cur">${esc(e.why)}</b>`, "curse", 1300);
       if (WD_CURSE_RE[e.why]) wdCapMark(WD_CURSE_RE[e.why]); wdCapAdd(`<div class="res rob">${esc(wdNm(e.q))}：${esc(e.why)}</div>`);
-      await W(800); return;
+      await W(1050); return;
     }
     case "die": {
       apply(); wdCapMark(/ダイス|宣言|振/);
@@ -3082,34 +3473,39 @@ async function wdStep(s){
       await wdRollMany(items);
       const txt = s.fx.map(f => `${f.a}${f.call ? (f.call === f.a ? "・的中！" : "・はずれ") : ""}`).join(" ／ ");
       wdPlayTx(`ダイス：${txt}`); wdCapAdd(`<div class="res">ダイス ${txt}</div>`);
-      return;
+      await W(400); return;
     }
     case "buff": {
-      apply(); const t = (e.cid && wdChEl(e.cid)) || wdSeatEl(e.p);
+      apply(); const t = wdFocCard() || (e.cid && wdChEl(e.cid)) || wdSeatEl(e.p);
       if (e.hl) wdCapMark(new RegExp(e.hl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
-      wdOver(t, `<b class="bf ${e.none ? "none" : ""}">${esc(e.t)}</b>`, "buff", 1200);
+      wdOver(t, `<b class="bf ${e.none ? "none" : ""}">${esc(e.t)}</b>`, "buff", 1400);
       wdCapAdd(`<div class="res ${e.none ? "none" : "bf"}">${esc(e.t)}</div>`);
       wdPlayTx(`${wdPN(e.p)}：${esc(e.t)}`);
-      await W(800); return;
+      if (e.t === "もう1つの目でも行動" && D.T && D.T.face){
+        const other = (D.T.dice || []).find(x => x !== D.T.face);
+        if (other){ wdSetTheme(D.T.face, other); wdBanner(`${wdIco(D.T.face)}<b>${D.T.face}</b> × ${wdIco(other)}<b>${other}</b><small>2つの属性がせめぎ合う</small>`, "face", 1500); await W(700); }
+      }
+      await W(1000); return;
     }
     case "earn": {
-      wdCapHide(); const c = wdDC(D, e.cid), gg = s.fx[1], m = c && c.s[0];
+      const c = wdDC(D, e.cid), gg = s.fx[1], m = c && c.s[0];
+      if (c) wdFocus({ cid: e.cid, c, ck: c.k, ac: WD_COL[m || "無"], cap: wdHd(e.p, wdDef(c).n, "wp獲得", "act") + `<p class="sub">ダイスを1つ振る。メイン${m ? `「${m}」` : "（無）"}に有利な目なら×2、不利なら×½。キャラLv${c.lv}：${wdLvWp(c)}wp</p>` });
       wdPlayTx(`${wdPN(e.p)}の${c ? wdDef(c).n : ""}がwp獲得のダイスを振る`);
-      const t = wdChEl(e.cid); wdHl(t, "wdhl", 1600);
+      await W(1100);
       const res = `<i class="call ${e.m === 2 ? "hit" : e.m === .5 ? "bad" : ""}">${!m ? "メインが無：そのまま" : e.m === 2 ? `メイン「${m}」に有利 ×2` : e.m === .5 ? `メイン「${m}」に不利 ×½` : `メイン「${m}」と中立 ×1`}</i>`;
       await wdRollOne(e.a, res, m ? `<i class="call">メイン ${m}</i>` : "");
       wdPlayTx(`${wdPN(e.p)}の${c ? wdDef(c).n : ""}：「${e.a}」${e.m === 2 ? "有利×2" : e.m === .5 ? "不利×½" : ""}${gg ? ` +${gg.v}wp` : ""}`);
-      if (gg){ await wdCoins(wdFelt(), wdWpEl(e.p), gg.v); }
-      apply(); if (gg){ wdFloat(wdWpEl(e.p), `+${gg.v}`, "plus"); wdHl(wdWpEl(e.p), "wdbump", 600); }
-      await W(350); return;
+      if (gg){ wdCapAdd(`<div class="res"><span class="calc">${c ? wdLvWp(c) : ""} × ${e.m === 2 ? "2" : e.m === .5 ? "½" : "1"}</span><b>+${gg.v}wp</b></div>`); await wdCoins(src(), wdWpEl(e.p), gg.v); }
+      apply(); if (gg){ wdFloat(wdWpEl(e.p), `+${gg.v}`, "plus"); wdHl(wdWpEl(e.p), "wdbump", 700); }
+      await W(1000); wdFocusEnd(); await W(400); return;
     }
     case "back": case "swap": {
-      apply(); const t = e.cid ? wdChEl(e.cid) : wdSeatEl(e.p); wdHl(t, "wdpopx", 600);
+      apply(); const t = e.cid ? wdChEl(e.cid) : wdSeatEl(e.p); wdHl(t, "wdpopx", 700);
       wdPlayTx(s.k === "back" ? `${wdPN(e.p)}が秘宝の${e.a}キューブを戻した` : `${wdPN(e.p)}がキューブを入れ替えた`);
-      await W(650); return;
+      await W(900); return;
     }
-    case "tend": { apply(); return; }
-    case "end": { apply(); wdCapHide(); return; }
+    case "tend": { wdFocusEnd(); apply(); return; }
+    case "end": { apply(); wdFocusEnd(); return; }
     default: apply();
   }
 }
@@ -3192,11 +3588,11 @@ function wd2tap(btn, label, run){
 }
 function wdCharMine(g, c){
   const st = g.st, d = wdDef(c);
-  const el = wdPopup(`<div class="wdas-hd" style="--ac:${WD_COL[d.sig]}">${wdEmb(c.k)}<div><b>${d.n}</b><span>Lv${c.lv}・${c.s.map(a => a || "無").join("・")}</span></div></div>
+  const el = wdPopup(`<div class="wdas-hd" style="--ac:${wdCAc(c)}">${wdEmbC(c)}<div><b>${d.n}</b><span>Lv${c.lv}・${c.s.map(a => a || "無").join("・")}</span></div></div>
     <p class="wdcp-desc">${st.T.ph === "tre" ? "秘宝を取るために枠を空けたいときは、秘宝をタップして「手放して獲得」を選ぶと無料です。" : "このキャラは今回の手番では行動できません。"}手放すだけなら、獲得コストと同じ${wdRelCost(c)}wpを払います。手放したキャラは山札に戻り、付いていたキューブもなくなります。</p>
     <div class="wdas-row foot"><button class="wdbtn ghost" data-i>効果を見る</button><button class="wdbtn danger" data-r ${st.wp[me] < wdRelCost(c) ? "disabled" : ""}>手放す<small>${wdRelCost(c)}wp</small></button></div>`);
   el.querySelector("[data-i]").onclick = () => wdCharPop(c.k, c, st, me);
-  wd2tap(el.querySelector("[data-r]"), `もう一度タップで手放す（${wdRelCost(c)}wp）`, () => { el.remove(); wdDo(g.id, me, ["rel", c.id]); });
+  el.querySelector("[data-r]").onclick = async () => { if (!(await wdConfirm(`${d.n}を手放しますか？`, `獲得コストと同じ <b>${wdRelCost(c)}wp</b> を払います。付いているキューブ（${c.s.filter(Boolean).join("・") || "なし"}）はなくなり、キャラは山札に戻ります。`, `手放す（${wdRelCost(c)}wp）`, true))) return; el.remove(); wdDo(g.id, me, ["rel", c.id]); };
 }
 function wdMarketPop(g, i){
   const st = g.st, k = st.mk[i]; if (k == null) return;
@@ -3227,7 +3623,7 @@ function wdTrePop(g, id){
     ${mine ? `<div class="wdas-row foot"><button class="wdbtn ${r.ok ? "main" : ""}" data-take ${r.ok ? "" : "disabled"}>${r.ok ? `獲得する（${r.pl.cost.toLocaleString()}wp）` : esc(r.why)}</button></div>` : ""}
     ${mine && !r.ok && relOk.length ? `<div class="wdtrerel"><b>キャラを手放せば獲得できます（手放すのは無料）</b>${relOk.map(c => `<button class="wdbtn" data-trel="${c.id}">${wdDef(c).n}を手放して獲得</button>`).join("")}</div>` : ""}`);
   const b = el.querySelector("[data-take]"); if (b && r.ok) b.onclick = () => { el.remove(); wdDo(g.id, me, ["tre", id]); };
-  el.querySelectorAll("[data-trel]").forEach(x => wd2tap(x, "もう一度タップで決定", () => { el.remove(); wdDo(g.id, me, ["trerel", id, x.dataset.trel]); }));
+  el.querySelectorAll("[data-trel]").forEach(x => x.onclick = async () => { const f = wdFind(st, x.dataset.trel); const nm = f ? wdDef(f.c).n : "キャラ"; if (!(await wdConfirm(`${nm}を手放して獲得しますか？`, `${nm}は山札に戻り、付いていたキューブはなくなります（手放すのは無料）。そのあと秘宝「${t.n}」を獲得します。`, "手放して獲得", true))) return; el.remove(); wdDo(g.id, me, ["trerel", id, x.dataset.trel]); });
 }
 function wdDiePop(g, a){
   const st = g.st;
@@ -3239,7 +3635,7 @@ function wdDiePop(g, a){
 function wdSeatPop(g, p){
   const st = g.st; if (!st.ch[p]) return;
   const el = wdPopup(`<div class="wdplp" style="--pc:${pcolor(p)}"><b>${esc(wdNm(p))}</b><span>${st.wp[p].toLocaleString()}wp・秘宝${wdTreN(st, p)}つ（★${wdStars(st, p)}）${wdShielded(st, p) ? "・干渉無効中" : ""}</span></div>
-    <div class="wdplc">${st.ch[p].map(c => { const d = wdDef(c); return `<button class="wdplr" data-c="${c.id}" style="--ac:${WD_COL[d.sig]}">${wdEmb(c.k)}<div><b>${d.n}</b><small>Lv${c.lv}（${wdLvWp(c)}wp）${c.seal ? "・行動封じ" : ""}</small></div><span class="sl">${c.s.map((a, i) => wdCube(a, i === 0)).join("")}</span></button>`; }).join("")}
+    <div class="wdplc">${st.ch[p].map(c => { const d = wdDef(c); return `<button class="wdplr" data-c="${c.id}" style="--ac:${wdCAc(c)}">${wdEmbC(c)}<div><b>${d.n}</b><small>Lv${c.lv}（${wdLvWp(c)}wp）${c.seal ? "・行動封じ" : ""}</small></div><span class="sl">${c.s.map((a, i) => wdCube(a, i === 0)).join("")}</span></button>`; }).join("")}
     ${st.tre[p].map(t => `<div class="wdmytre r${wdTreDef(t.id).r}"><span>${wdStarTx(wdTreDef(t.id).r)}</span><b>${wdTreDef(t.id).n}</b><span class="cb">${t.cubes.map(a => wdIco(a)).join("")}</span></div>`).join("")}</div>
     <p class="wdcp-note">キャラをタップで効果一覧</p>`);
   el.querySelectorAll("[data-c]").forEach(b => b.onclick = () => { const f = wdFind(st, b.dataset.c); if (f) wdCharPop(f.c.k, f.c, st, f.p); });
@@ -3256,9 +3652,9 @@ function wdActSheet(g, cid){
   let slot = free[0], attr = null;
   const lvc = c.lv < 5 ? wdLvCost(st, me, c, 1) : 0, lv2 = T.lv2[cid] && c.lv <= 3 ? wdLvCost(st, me, c, 2) : 0;
   const m = c.s[0];
-  const el = wdPopup(`<div class="wdas-hd" style="--ac:${WD_COL[d.sig]}">${wdEmb(c.k)}<div><b>${d.n}</b><span>Lv${c.lv}・あと${T.acts[cid]}回行動できる・所持 ${wp.toLocaleString()}wp</span></div><button class="mini" data-i>効果一覧</button></div>
+  const el = wdPopup(`<div class="wdas-hd" style="--ac:${wdCAc(c)}">${wdEmbC(c)}<div><b>${d.n}</b><span>Lv${c.lv}・あと${T.acts[cid]}回行動できる・所持 ${wp.toLocaleString()}wp</span></div><button class="mini" data-i>効果一覧</button></div>
     <div class="wdas-tabs"><button data-t="g" class="on">属性付与</button><button data-t="l">Lv上げ</button><button data-t="b">キャラ獲得</button><button data-t="e">wp獲得</button></div>
-    <div class="wdas-pane" data-p="g">${free.length ? `<div class="wdas-slots">${free.map(i => `<button class="wdslotb ${i === slot ? "on" : ""}" data-slot2="${i}">${i === 0 ? "メイン枠" : `サブ${i}`}</button>`).join("")}<small>${slot === 0 ? "メインは手順1で2倍・一度付けると動かせない" : ""}</small></div>
+    <div class="wdas-pane" data-p="g"><div class="wdas-cur"><small>いま付いている属性（空いている枠をタップして選ぶ）</small><div class="sl3">${c.s.map((a, i) => `<button class="wdsl3 ${a ? "have" : "free"} ${!a && i === slot ? "on" : ""}" ${a ? "disabled" : `data-slot2="${i}"`} style="--ac:${WD_COL[a || "無"]}">${a ? wdIco(a) : `<i class="wdico none"></i>`}<b>${a || "空き"}</b><small>${i === 0 ? "メイン" : `サブ${i}`}${a ? "・付与済み" : ""}</small></button>`).join("")}</div><small class="h">${slot === 0 ? "メインは手順1で2倍・一度付けると動かせない" : ""}</small></div>${free.length ? `
       <div class="wdas-attrs">${WD_AT.map(a => { const cost = wdGrantCost(st, me, c, a); return `<button class="wdattr ${a === d.sig ? "sig" : ""} ${cost > wp ? "short" : ""}" data-ga="${a}" ${cost > wp ? `data-short="${cost - wp}"` : ""} style="--ac:${WD_COL[a]}">${wdIco(a)}<b>${a}</b><small>${cost}</small></button>`; }).join("")}</div>
       <div class="wdas-prev" id="wdGPrev"><small>属性をタップすると、その属性の効果がここに出ます。${WD_AT.some(a => wdGrantCost(st, me, c, a) > wp) ? "暗い属性はwpが足りず付与できません（タップで理由）。" : ""}</small></div>` : `<p class="wdcp-desc">空いている枠がありません。</p>`}</div>
     <div class="wdas-pane" data-p="l" hidden>${wdLvPane(st, c, lvc, lv2, wp)}</div>
@@ -3274,7 +3670,7 @@ function wdActSheet(g, cid){
     box.innerHTML = `${short > 0 ? `<div class="wdas-why">付与できません：wpが足りません<small>付与コスト ${cost}wp ／ 所持 ${wp}wp（あと ${short}wp）</small></div>` : ""}<div class="wdas-pv" style="--ac:${WD_COL[attr]}">${wdIco(attr)}<div><b>「${attr}」の目が出たときの効果</b><p>${esc(d.e[attr].tx)}</p></div></div>${short > 0 ? "" : `<button class="wdbtn main" data-gok>${slot === 0 ? "メイン枠" : `サブ${slot}`}に「${attr}」を付与（${cost}wp）</button>`}`;
     const ok = box.querySelector("[data-gok]"); if (ok) ok.onclick = () => go(["act", cid, "grant", { s: slot, a: attr }]);
   };
-  el.querySelectorAll("[data-slot2]").forEach(b => b.onclick = () => { slot = +b.dataset.slot2; el.querySelectorAll("[data-slot2]").forEach(x => x.classList.toggle("on", x === b)); const sm = el.querySelector(".wdas-slots small"); if (sm) sm.textContent = slot === 0 ? "メインは手順1で2倍・一度付けると動かせない" : ""; prev(); });
+  el.querySelectorAll("[data-slot2]").forEach(b => b.onclick = () => { slot = +b.dataset.slot2; el.querySelectorAll("[data-slot2]").forEach(x => x.classList.toggle("on", x === b)); const sm = el.querySelector(".wdas-cur .h"); if (sm) sm.textContent = slot === 0 ? "メインは手順1で2倍・一度付けると動かせない" : ""; prev(); });
   el.querySelectorAll("[data-ga]").forEach(b => b.onclick = () => { attr = b.dataset.ga; el.querySelectorAll("[data-ga]").forEach(x => x.classList.toggle("on", x === b)); prev(); });
   el.querySelectorAll("[data-lv]").forEach(b => b.onclick = () => go(["act", cid, b.dataset.lv === "2" ? "lv2" : "lv"]));
   let buyI = null;
@@ -3283,8 +3679,8 @@ function wdActSheet(g, cid){
       box.innerHTML = `<div class="wdas-pv" style="--ac:${WD_COL[dd.sig]}">${wdIco(dd.sig)}<div><b>${dd.n}（${dd.t}・得意${dd.sig}）</b><p>${esc(dd.desc)}</p></div></div>${ok ? `<div class="wdpay"><span class="wdcoinpile"><i></i><i></i><i></i></span><div><small>支払うコスト</small><b>${cost.toLocaleString()}wp</b></div><div class="af"><small>支払い後の所持</small><b>${wp.toLocaleString()} → ${(wp - cost).toLocaleString()}</b></div></div><button class="wdbtn main" data-buyok>${dd.n}を獲得する</button>` : `<div class="wdas-why">${wdFreeSlots(st, me) < 1 ? "枠が空いていません<small>キャラか秘宝で4枠が埋まっています。キャラを手放すと空きます。</small>" : `wpが足りません<small>獲得コスト ${cost}wp ／ 所持 ${wp}wp（あと ${cost - wp}wp）</small>`}</div>`}`;
       const okb = box.querySelector("[data-buyok]"); if (okb) okb.onclick = () => go(["act", cid, "buy", buyI]); }; });
   el.querySelector("[data-earn]").onclick = () => go(["act", cid, "earn"]);
-  el.querySelector("[data-skip]").onclick = () => go(["act", cid, "skip"]);
-  wd2tap(el.querySelector("[data-rel]"), `もう一度タップで手放す（${wdRelCost(c)}wp）`, () => go(["rel", cid]));
+  el.querySelector("[data-skip]").onclick = async () => { if (await wdConfirm("この行動はしない？", `${d.n}は、この手番ではもう行動できなくなります（残り${T.acts[cid]}回の行動がなくなります）。`, "行動しない")) go(["act", cid, "skip"]); };
+  el.querySelector("[data-rel]").onclick = async () => { if (await wdConfirm(`${d.n}を手放しますか？`, `獲得コストと同じ <b>${wdRelCost(c)}wp</b> を払います。付いているキューブ（${c.s.filter(Boolean).join("・") || "なし"}）はなくなり、キャラは山札に戻ります。`, `手放す（${wdRelCost(c)}wp）`, true)) go(["rel", cid]); };
 }
 /* Lv上げの図解：払うwpと増えるwp */
 function wdLvPane(st, c, lvc, lv2, wp){
@@ -3334,7 +3730,7 @@ function wdMenu(g){
   const s = openSheet("WARDENS OF RELIC", `<div class="btns col"><button class="btn sub" data-grule="wd">ルールを見る</button><button class="btn sub" id="wdZkB">キャラ図鑑（全20体）</button><button class="btn sub" id="wdLogB">ログを見る</button>${mine && g.status === "playing" ? `<button class="btn danger" id="wdAbort">この対戦をやめる</button>` : ""}</div>`);
   s.querySelector("#wdZkB").onclick = () => { closeSheet(); wdZukan(); };
   const lb = s.querySelector("#wdLogB"); if (lb) lb.onclick = () => openSheet("ログ", `<div class="wdlog">${(g.log || []).slice().reverse().map(l => `<p>${colorizeLog(g.players, l.m)}</p>`).join("")}</div>`);
-  const ab = s.querySelector("#wdAbort"); if (ab) ab.onclick = async () => { if (!confirmWd("この対戦をやめますか？（戦績には残りません）")) return; const { error } = await sb.from("wd_games").update({ status: "aborted" }).eq("id", g.id); if (error) return fail(error, "中止"); await loadTable("wd_games"); closeSheet(); closeWd(); };
+  const ab = s.querySelector("#wdAbort"); if (ab) ab.onclick = async () => { if (!confirmWd("この対戦をやめますか？（戦績には残りません）")) return; const { error } = await sbWd.from("wd_games").update({ status: "aborted" }).eq("id", g.id); if (error) return fail(error, "中止"); await loadTable("wd_games"); closeSheet(); closeWd(); };
 }
 const wdEndSeen = {};
 function wdEndShow(g){
@@ -3371,6 +3767,7 @@ function openWdNew(){
     if (!order.some(id => !isCpu(id))){ toast("人間のプレイヤーを1人以上入れてください"); return; }
     if (order.length < 2 || order.length > 5){ toast("参加者は2〜5人です"); return; }
     $("#wdGo").disabled = true;
+    if (sbWd && sbWd !== sb){ const pl = db.players.filter(p => order.includes(p.id)).map(p => ({ id: p.id, name: p.name, color: p.color, sort: p.sort || 0 })); if (pl.length) try { await sbWd.from("players").upsert(pl); } catch (e) {} }
     const r = await wdCall({ op: "new", players: order, by: me || null });
     $("#wdGo").disabled = false;
     if (!r || !r.ok){ const m = (r && r.error) || ""; if (/wd_games|relation|exist|schema|permission/i.test(m)) toast("WARDENS OF RELICを使うには schema.sql をもう一度実行してください", 3800); else toast("作成できませんでした：" + m, 4000); return; }
